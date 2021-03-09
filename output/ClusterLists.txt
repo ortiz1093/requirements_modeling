@@ -1,0 +1,53 @@
+Keyword Clusters
+        Group 0
+                The air defense system shall be able to support joint operations with long-range capabilities.
+        Group 1
+                The air base-2 shall be able to engage X number of adversary fighters at the same time.
+                The air base-2 shall have airlift capability.
+                The air base-3 shall have long-range (X km) air-to-ground capability.
+                The air base-3 shall have short-range (X km) air-to-ground capability.
+                The air base-3 shall provide airspace surveillance operation.
+        Group 2
+                Number of combat personnel should be increased in coastal area to Y.
+                Number of total personnel should be decreased within 2020 to Z.
+        Group 3
+                Near artic region electrical equipment operation temperature should be at least -10◦C.
+        Group 4
+                The air defense should prevent airspace violation.
+                Construction work should not start before 2016.
+                Construction work should start before 2016.
+                The five stations should be available for air base-2.
+                20 F/A-18 Hornet should be operated.
+                25 F/A-18 Hornet should be on the system.
+                Three F-15 fighters should be on the system.
+                Not more than two F-15 fighters should be on the system.
+                Empty weight of F-16 fighter should be less than 8570 kg.
+                Weight of F-16 fighter should be less than 8575 kg.
+                Helicopter pad should be located near flying operations.
+
+
+Similarity Clusters
+        Group 0
+                The air defense system shall be able to support joint operations with long-range capabilities.
+                The air defense should prevent airspace violation.
+                The air base-2 shall be able to engage X number of adversary fighters at the same time.
+                The air base-2 shall have airlift capability.
+                The air base-3 shall provide airspace surveillance operation.
+                Number of combat personnel should be increased in coastal area to Y.
+                The five stations should be available for air base-2.
+                Near artic region electrical equipment operation temperature should be at least -10◦C.
+                Helicopter pad should be located near flying operations.
+        Group 1
+                The air base-3 shall have long-range (X km) air-to-ground capability.
+                The air base-3 shall have short-range (X km) air-to-ground capability.
+        Group 2
+                20 F/A-18 Hornet should be operated.
+                25 F/A-18 Hornet should be on the system.
+                Empty weight of F-16 fighter should be less than 8570 kg.
+                Weight of F-16 fighter should be less than 8575 kg.
+        Group 3
+                Construction work should not start before 2016.
+                Construction work should start before 2016.
+                Number of total personnel should be decreased within 2020 to Z.
+                Three F-15 fighters should be on the system.
+                Not more than two F-15 fighters should be on the system.
