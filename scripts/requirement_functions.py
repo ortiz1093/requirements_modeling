@@ -401,7 +401,7 @@ if __name__ == "__main__":
     reqs = doc.split("\n")
 
     network_layout = "spring"
-    sigma = 'norm std'
+    sigma = 'min std'
 
 
     A1 = gen_keyword_matrix(reqs)

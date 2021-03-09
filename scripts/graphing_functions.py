@@ -50,7 +50,7 @@ def _get_color_name(clr):
     return colors[clr]
 
 
-def generate_graph(points, ax=None, sigma='min std'):
+def generate_graph(points, ax=None, sigma='min std', title=""):
     G = nx.Graph()
 
     relation_matrix = _relation_matrix(points, sigma=sigma)
@@ -64,7 +64,9 @@ def generate_graph(points, ax=None, sigma='min std'):
     edges = G.edges()
     weights = [G[u][v]['weight'] for u, v in edges]
     
+    title += " " if title else ""
     fig, ax = plt.subplots()
+    ax.set_title(title + "Network")
     nx.draw(G, pos, with_labels=True, width=weights, ax=ax)
     
     return fig, ax, G
@@ -84,22 +86,25 @@ def plot_singular_values(matrix, n_dims=3):
     return fig, ax
 
 
-def affinity_propagation_plots(X, reqs=None, show_labels=True, ax=None):
+def affinity_propagation_plots(X, reqs=None, show_labels=True, ax=None,
+                                title=""):
 
     clusters = AffinityPropagation(damping=0.6, random_state=5).fit(X)
     centers = clusters.cluster_centers_indices_
     n_clusters = len(centers)
     labels = clusters.labels_
 
+    title += " " if title else ""
     fig = plt.figure()
+    fig.suptitle(title + "Cluster")
     ax = fig.add_subplot(111, projection='3d')
 
     print("\nClusters") if reqs else None
     colors = cycle('bogrpwnlc')
     for k, clr in zip(range(n_clusters), colors):
         cls_mbrs = labels == k
-        # color = "tab:" + _get_color_name(clr)
-        color = "b"
+        color = "tab:" + _get_color_name(clr)
+        # color = "b"
         ax.scatter(
             X[cls_mbrs, 0],
             X[cls_mbrs, 1],
@@ -173,19 +178,7 @@ def get_edge_weights(G):
     pass
 
 
-def make_edge(x, y, width):
-
-    return go.Scatter(
-        x=x,
-        y=y,
-        mode='lines',
-        line=dict(
-            width=width,
-            color='#888'
-        )
-    )
-
-def node_adjacency_heat(G, layout="kamada_kawai"):
+def node_adjacency_heat(G, layout="kamada_kawai", title=""):
     layouts = {
         "circular": nx.circular_layout,
         "kamada_kawai": nx.kamada_kawai_layout,
@@ -200,22 +193,19 @@ def node_adjacency_heat(G, layout="kamada_kawai"):
     }
     
     pos = layouts[layout](G)
-    # edge_x = []
-    # edge_y = []
-    edge_traces = []
+    edge_x = []
+    edge_y = []
     for edge in G.edges():
         x0, y0 = pos[edge[0]]
         x1, y1 = pos[edge[1]]
-        
-        edge_traces.append(make_edge())
-    #     edge_x += [x0, x1, None]
-    #     edge_y += [y0, y1, None]
+        edge_x += [x0, x1, None]
+        edge_y += [y0, y1, None]
 
-    # edge_trace = go.Scatter(
-    #     x=edge_x, y=edge_y,
-    #     line=dict(width=0.5, color='#888'),
-    #     hoverinfo='none',
-    #     mode='lines')
+    edge_trace = go.Scatter(
+        x=edge_x, y=edge_y,
+        line=dict(width=0.5, color='#888'),
+        hoverinfo='none',
+        mode='lines')
 
     node_x = []
     node_y = []
@@ -258,9 +248,10 @@ def node_adjacency_heat(G, layout="kamada_kawai"):
     node_trace.marker.color = node_degree
     node_trace.text = node_text
 
+    title += " " if title else ""
     fig = go.Figure(data=[edge_trace, node_trace],
                 layout=go.Layout(
-                    title='<br>Network graph made with Python',
+                    title="<br><b>" + title + "Node Adjecency Heat Map</b>",
                     titlefont_size=16,
                     showlegend=False,
                     hovermode='closest',
