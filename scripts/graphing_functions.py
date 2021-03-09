@@ -178,6 +178,18 @@ def get_edge_weights(G):
     pass
 
 
+def edge_trace(x,y,width):
+    w_rg = np.array([0.1, 0.7])
+    shift = 5
+    scale = 10
+    squish = lambda x: float(w_rg.min() + \
+                             np.diff(w_rg)/(1+np.exp(-(scale*x-shift))))
+    return go.Scatter(
+        x=x, y=y,
+        mode='lines',
+        line=dict(width=1.5*squish(width), color='black')
+    )
+
 def node_adjacency_heat(G, layout="kamada_kawai", title=""):
     layouts = {
         "circular": nx.circular_layout,
@@ -195,17 +207,20 @@ def node_adjacency_heat(G, layout="kamada_kawai", title=""):
     pos = layouts[layout](G)
     edge_x = []
     edge_y = []
+    edge_traces = []
     for edge in G.edges():
         x0, y0 = pos[edge[0]]
         x1, y1 = pos[edge[1]]
-        edge_x += [x0, x1, None]
-        edge_y += [y0, y1, None]
+        e = edge_trace([x0, x1], [y0, y1], G[edge[0]][edge[1]]['weight'])
+        edge_traces.append(e)
+        # edge_x += [x0, x1, None]
+        # edge_y += [y0, y1, None]
 
-    edge_trace = go.Scatter(
-        x=edge_x, y=edge_y,
-        line=dict(width=0.5, color='#888'),
-        hoverinfo='none',
-        mode='lines')
+    # edge_trace = go.Scatter(
+    #     x=edge_x, y=edge_y,
+    #     line=dict(width=0.5, color='#888'),
+    #     hoverinfo='none',
+    #     mode='lines')
 
     node_x = []
     node_y = []
@@ -249,32 +264,38 @@ def node_adjacency_heat(G, layout="kamada_kawai", title=""):
     node_trace.text = node_text
 
     title += " " if title else ""
-    fig = go.Figure(data=[edge_trace, node_trace],
-                layout=go.Layout(
-                    title="<br><b>" + title + "Node Adjecency Heat Map</b>",
-                    titlefont_size=16,
-                    showlegend=False,
-                    hovermode='closest',
-                    margin=dict(b=20,l=5,r=5,t=40),
-                    annotations=[ dict(
-                        text="Python code: <a href='https://plotly.com/ipython-notebooks/network-graphs/'> https://plotly.com/ipython-notebooks/network-graphs/</a>",
-                        showarrow=False,
-                        xref="paper", yref="paper",
-                        x=0.005, y=-0.002 ) ],
-                    xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                    yaxis=dict(showgrid=False, zeroline=False, showticklabels=False))
+
+    # Citation: 'https://plotly.com/ipython-notebooks/network-graphs/
+    fig = go.Figure(data=[*edge_traces, node_trace],
+                    layout=go.Layout(
+                        title="<br><b>" + title + "Node Adjecency Heat Map</b>",
+                        titlefont_size=16,
+                        showlegend=False,
+                        hovermode='closest',
+                        margin=dict(b=20,l=5,r=5,t=40),
+                        xaxis=dict(showgrid=False,
+                                   zeroline=False,
+                                   showticklabels=False),
+                        yaxis=dict(showgrid=False,
+                                   zeroline=False,
+                                   showticklabels=False)
+                        )
                     )
     fig.show()
 
 
 if __name__ == "__main__":
-    # points = np.random.rand(2,20)
-    # generate_graph(points)
-    # plt.show()
+    # d = 5
+    # W = np.random.rand(d, d)
+    # H = nx.Graph()
+    # wtd_edges = [(i,ii,W[i,ii]) for i in range(d) for ii in range(d)]
+    # H.add_weighted_edges_from(wtd_edges)
+    # node_adjacency_heat(H, layout="spring")
+    
+    sigmoid = lambda x: 0.3 + 0.4/(1+np.exp(-(10*x-5)))
 
-    num_points = 5
-    x = 0.2*np.random.rand(num_points)
-    y = 0.6*np.random.rand(num_points)
-    points = np.vstack((x, y))
-
-    show_gaussian_overlap(points)
+    x=np.linspace(0, 1, 100)
+    y=sigmoid(x)
+    fig = go.Figure(data=go.Scatter(x=x, y=y))
+    fig.show()
+    

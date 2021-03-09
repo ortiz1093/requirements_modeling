@@ -11,7 +11,7 @@ def visualize_matrix(A, reqs, network_layout="spring", sigma="min std",
     figA, axA = affinity_propagation_plots(A[:3, :].T, reqs, title=title)
     figB, axB, G = generate_graph(A[:2, :], sigma=sigma, title=title)
     node_adjacency_heat(G, layout=network_layout, title=title)
-    show_gaussian_overlap(A[:2, :], sigma=sigma)
+    # show_gaussian_overlap(A[:2, :], sigma=sigma)
 
     return figA, axA, figB, axB
 
@@ -27,13 +27,9 @@ sigma = 'norm std'
 A1 = gen_keyword_matrix(reqs)
 _, _, Vh1 = svd(A1, full_matrices=True)
 fig1a, ax1a, fig1b, ax1b = visualize_matrix(Vh1, reqs, title="Keyword")
-# ax1a.set_title("Keyword Clusters")
-# ax1b.set_title("Keyword Network")
 
 A2 = gen_similarity_matrix(reqs, measure='jaccard')
 _, _, Vh2 = svd(A2, full_matrices=True)
 fig2a, ax2a, fig2b, ax2b = visualize_matrix(Vh2, reqs, title="Similarity")
-# ax2a.set_title("Similarity Clusters")
-# ax2b.set_title("Similarity Network")
 
-plt.show()
+# plt.show()
