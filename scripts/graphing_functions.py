@@ -63,6 +63,16 @@ def make_graph(points, sigma='min std'):
     return G
 
 
+def combine_graphs(g, h):
+    assert g.order() == h.order(), "Graphs must have the same order"
+
+    nodes = range(g.order())
+
+    g_wts = np.array([g.adj[i][j] for i in g.nodes() for j in g.nodes()])
+    h_wts = np.array([h.adj[i][j] for i in h.nodes() for j in h.nodes()])
+
+
+
 def generate_network_plot(points, ax=None, sigma='min std', title=""):
     G = nx.Graph()
 
@@ -206,7 +216,7 @@ def edge_trace(x,y,width):
     )
 
 
-def node_adjacency_heat(G, layout="kamada_kawai", title=""):
+def node_adjacency_heat(G, layout="spring", title=""):
     layouts = {
         "circular": nx.circular_layout,
         "kamada_kawai": nx.kamada_kawai_layout,
@@ -293,21 +303,15 @@ def node_adjacency_heat(G, layout="kamada_kawai", title=""):
 
 
 if __name__ == "__main__":
-    # d = 5
-    # W = np.random.rand(d, d)
-    # H = nx.Graph()
-    # wtd_edges = [(i,ii,W[i,ii]) for i in range(d) for ii in range(d)]
-    # H.add_weighted_edges_from(wtd_edges)
-    # node_adjacency_heat(H, layout="spring")
-    
-    w_rg = np.array([0.1, 0.7])
-    shift = 5
-    scale = 10
-    # squish = lambda x: w_rg.min() + \
-    #                          float(np.diff(w_rg))/(1+np.exp(-(scale*x-shift)))
-    squish = lambda x: float(np.diff(w_rg))*x + w_rg.min()
+    d = 5
+    Wh = np.random.rand(d, d)
+    H = nx.Graph()
+    wtd_edges = [(i,ii,Wh[i,ii]) for i in range(d) for ii in range(d)]
+    H.add_weighted_edges_from(wtd_edges)
 
-    x=np.linspace(0, 1, 100)
-    y=squish(x)
-    fig = go.Figure(data=go.Scatter(x=x, y=y))
-    fig.show()
+    Wg = np.random.rand(d, d)
+    G = nx.Graph()
+    wtd_edges = [(i,ii,Wg[i,ii]) for i in range(d) for ii in range(d)]
+    G.add_weighted_edges_from(wtd_edges)
+    
+    pass

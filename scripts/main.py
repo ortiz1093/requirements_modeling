@@ -1,4 +1,5 @@
 from numpy.linalg import svd
+import matplotlib.pyplot as plt
 from requirement_functions import import_from_txt, gen_keyword_matrix, \
     gen_similarity_matrix
 from graphing_functions import affinity_propagation_plots, make_graph, \
@@ -34,4 +35,9 @@ A2 = gen_similarity_matrix(reqs, measure='jaccard')
 _, _, Vh2 = svd(A2, full_matrices=True)
 fig2a, ax2a = visualize_matrix(Vh2, reqs, title="Similarity")
 
-# plt.show()
+plt.show()
+
+# TODO: Finish code function for combining graphs
+# TODO: Create class for requirement sets with attributes, graphs, etc.
+# TODO: Migrate scatter and cluster plots to plotly
+# TODO: Run on Gateway & old GVSC requirements

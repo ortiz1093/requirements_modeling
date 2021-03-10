@@ -10,7 +10,7 @@ from mrakun import RakunDetector
 from nltk.corpus import stopwords
 from scipy.linalg import svd
 import matplotlib.pyplot as plt
-from graphing_functions import generate_graph, affinity_propagation_plots, node_adjacency_heat, show_gaussian_overlap
+from graphing_functions import make_graph, affinity_propagation_plots, node_adjacency_heat, show_gaussian_overlap
 import spacy
 
 nlp = spacy.load("en_core_web_md")
