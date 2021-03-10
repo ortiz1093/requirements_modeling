@@ -1,4 +1,4 @@
 .vscode/
 nlpEnv
 __pycache__/
-
+.idea/
