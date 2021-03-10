@@ -50,7 +50,20 @@ def _get_color_name(clr):
     return colors[clr]
 
 
-def generate_graph(points, ax=None, sigma='min std', title=""):
+def make_graph(points, sigma='min std'):
+    G = nx.Graph()
+
+    relation_matrix = _relation_matrix(points, sigma=sigma)
+
+    dim, _ = relation_matrix.shape
+    for i in range(dim):
+        for ii in range(i, dim):
+            G.add_edge(i, ii, color='k', weight=relation_matrix[i][ii])
+    
+    return G
+
+
+def generate_network_plot(points, ax=None, sigma='min std', title=""):
     G = nx.Graph()
 
     relation_matrix = _relation_matrix(points, sigma=sigma)
