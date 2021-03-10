@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 from numpy.linalg import svd
 from requirement_functions import import_from_txt, gen_keyword_matrix, \
     gen_similarity_matrix
@@ -6,14 +5,15 @@ from graphing_functions import affinity_propagation_plots, generate_graph, \
     node_adjacency_heat, show_gaussian_overlap
 
 
-def visualize_matrix(A, reqs, network_layout="spring", sigma="min std",
+def visualize_matrix(relation_matrix, requirement_list, layout="spring", sig="min std",
                      title=""):
-    figA, axA = affinity_propagation_plots(A[:3, :].T, reqs, title=title)
-    figB, axB, G = generate_graph(A[:2, :], sigma=sigma, title=title)
-    node_adjacency_heat(G, layout=network_layout, title=title)
-    # show_gaussian_overlap(A[:2, :], sigma=sigma)
+    fig_a, ax_a = affinity_propagation_plots(relation_matrix[:3, :].T, requirement_list, title=title)
+    fig_b, ax_b, g = generate_graph(relation_matrix[:2, :], sigma=sig, title=title)
+    node_adjacency_heat(g, layout=layout, title=title)
+    show_gaussian_overlap(relation_matrix[:2, :], sigma=sigma)
 
-    return figA, axA, figB, axB
+    return fig_a, ax_a, fig_b, ax_b
+
 
 src = "data/mokammel_requirements.txt"
 tgt = "output/keyword_lists.txt"

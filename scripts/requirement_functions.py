@@ -228,7 +228,7 @@ def _minmax(X, axis=0):
     return (X - X_min) / (X_max - X_min)
 
 
-def gen_keyword_matrix(requirements):
+def gen_keyword_matrix(requirements: object) -> object:
     """
     Create a keyword x requirement matrix where elements represent the
     frequency of each keyword in each requirement.
@@ -402,7 +402,6 @@ if __name__ == "__main__":
 
     network_layout = "spring"
     sigma = 'min std'
-
 
     A1 = gen_keyword_matrix(reqs)
     _, _, Vh1 = svd(A1, full_matrices=True)

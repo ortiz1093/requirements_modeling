@@ -182,13 +182,16 @@ def edge_trace(x,y,width):
     w_rg = np.array([0.1, 0.7])
     shift = 5
     scale = 10
-    squish = lambda x: float(w_rg.min() + \
-                             np.diff(w_rg)/(1+np.exp(-(scale*x-shift))))
+    # squish = lambda x: float(w_rg.min() + \
+    #                          np.diff(w_rg)/(1+np.exp(-(scale*x-shift))))
+    squish = lambda x: float(np.diff(w_rg))*x + w_rg.min()
+
     return go.Scatter(
         x=x, y=y,
         mode='lines',
         line=dict(width=1.5*squish(width), color='black')
     )
+
 
 def node_adjacency_heat(G, layout="kamada_kawai", title=""):
     layouts = {
@@ -213,14 +216,6 @@ def node_adjacency_heat(G, layout="kamada_kawai", title=""):
         x1, y1 = pos[edge[1]]
         e = edge_trace([x0, x1], [y0, y1], G[edge[0]][edge[1]]['weight'])
         edge_traces.append(e)
-        # edge_x += [x0, x1, None]
-        # edge_y += [y0, y1, None]
-
-    # edge_trace = go.Scatter(
-    #     x=edge_x, y=edge_y,
-    #     line=dict(width=0.5, color='#888'),
-    #     hoverinfo='none',
-    #     mode='lines')
 
     node_x = []
     node_y = []
@@ -292,10 +287,14 @@ if __name__ == "__main__":
     # H.add_weighted_edges_from(wtd_edges)
     # node_adjacency_heat(H, layout="spring")
     
-    sigmoid = lambda x: 0.3 + 0.4/(1+np.exp(-(10*x-5)))
+    w_rg = np.array([0.1, 0.7])
+    shift = 5
+    scale = 10
+    # squish = lambda x: w_rg.min() + \
+    #                          float(np.diff(w_rg))/(1+np.exp(-(scale*x-shift)))
+    squish = lambda x: float(np.diff(w_rg))*x + w_rg.min()
 
     x=np.linspace(0, 1, 100)
-    y=sigmoid(x)
+    y=squish(x)
     fig = go.Figure(data=go.Scatter(x=x, y=y))
     fig.show()
-    
