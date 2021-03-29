@@ -66,11 +66,16 @@ def make_graph(points, sigma='min std'):
 def combine_graphs(g, h):
     assert g.order() == h.order(), "Graphs must have the same order"
 
-    nodes = range(g.order())
+    nodes = g.order()
 
-    g_wts = np.array([g.adj[i][j] for i in g.nodes() for j in g.nodes()])
-    h_wts = np.array([h.adj[i][j] for i in h.nodes() for j in h.nodes()])
+    # g_wts = np.array([g.adj[i][j]['weight'] for i in g.nodes() for j in g.nodes()])
+    # h_wts = np.array([h.adj[i][j] for i in h.nodes() for j in h.nodes()])
+    new_edges = [(i, j, g.adj[i][j]['weight'] + h.adj[i][j]['weight']) for i in range(nodes) for j in range(i,nodes)]
 
+    new_graph = nx.Graph()
+    new_graph.add_weighted_edges_from(new_edges)
+
+    return new_graph
 
 
 def generate_network_plot(points, ax=None, sigma='min std', title=""):
@@ -229,7 +234,7 @@ def node_adjacency_heat(G, layout="spring", title=""):
         "spiral": nx.spiral_layout,
         "multipartite": nx.multipartite_layout,
     }
-    
+
     pos = layouts[layout](G)
     edge_x = []
     edge_y = []
@@ -249,7 +254,7 @@ def node_adjacency_heat(G, layout="spring", title=""):
 
     node_trace = go.Scatter(
         x=node_x, y=node_y,
-        mode='markers',
+        mode='markers+text',
         hoverinfo='text',
         marker=dict(
             showscale=True,
@@ -268,17 +273,20 @@ def node_adjacency_heat(G, layout="spring", title=""):
                 titleside='right'
             ),
             line_width=2))
-        
+
     node_degree = []
+    node_hovertext = []
     node_text = []
 
     weighted_degrees = G.degree(weight='weight')
     for i, degree in enumerate(weighted_degrees):
         node_degree.append(degree[1])
         # node_text.append('Centrality: ' + str(degree[1]))
-        node_text.append(f"Requirement {i}, Wtd Degree: {degree[1]}")
+        node_text.append(str(i).zfill(2))
+        node_hovertext.append(f"Requirement {i}<br>Wtd Degree: {np.round(degree[1],2)}")
 
     node_trace.marker.color = node_degree
+    node_trace.hovertext = node_hovertext
     node_trace.text = node_text
 
     title += " " if title else ""
@@ -286,7 +294,7 @@ def node_adjacency_heat(G, layout="spring", title=""):
     # Citation: 'https://plotly.com/ipython-notebooks/network-graphs/
     fig = go.Figure(data=[*edge_traces, node_trace],
                     layout=go.Layout(
-                        title="<br><b>" + title + "Node Adjecency Heat Map</b>",
+                        title="<br><b>" + title + "Node Adjacency Heat Map</b>",
                         titlefont_size=16,
                         showlegend=False,
                         hovermode='closest',
@@ -313,5 +321,7 @@ if __name__ == "__main__":
     G = nx.Graph()
     wtd_edges = [(i,ii,Wg[i,ii]) for i in range(d) for ii in range(d)]
     G.add_weighted_edges_from(wtd_edges)
+
+    combine_graphs(G, H)
     
     pass
