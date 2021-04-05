@@ -17,7 +17,7 @@ class Requirement:
         self.keywords = None
         self.system = None
 
-    def get_keywords(self, algorithm):
+    def extract_keywords(self, algorithm):
         algo_opts = ["FirstN", "TextRank", "SingleRank", "TopicRank",
                      "PositionRank", "LexRank", "rakun"]
 
@@ -58,7 +58,11 @@ class RequirementSet:
         self.len = 0
         self.head = None
         self.tail = None
-        self.keywords = []
+        self.keywords = set()
+        self.cursor = self.head
+
+    def reset_cursor(self):
+        self.cursor = self.head
 
     def add_requirement(self, text):
         if self.len > 0:
@@ -68,8 +72,15 @@ class RequirementSet:
         else:
             self.head = Requirement(text)
             self.tail = self.head
+            self.reset_cursor()
 
         self.len += 1
+
+    def __repr__(self):
+        return self.__class__.__name__
+
+    def __str__(self):
+        return self.text
 
     def __len__(self):
         return self.len
@@ -85,6 +96,19 @@ class RequirementSet:
 
         return cursor.text
 
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.cursor:
+            item = self.cursor
+            self.cursor = self.cursor.next
+        else:
+            self.reset_cursor()
+            raise StopIteration()
+
+        return item
+
     def all_reqs(self):
         if self.len == 0:
             print("No requirements to print")
@@ -94,6 +118,11 @@ class RequirementSet:
             for i in range(self.len):
                 print(self[i])
 
+    def extract_keywords(self, algorithm):
+        for req in self:
+            req.extract_keywords(algorithm)
+            self.keywords = self.keywords.union(req.keywords)
+
 
 if __name__ == "__main__":
     req_list_1 = RequirementSet()
@@ -101,5 +130,5 @@ if __name__ == "__main__":
     req_list_1.add_requirement("This is the second requirement.")
     req_list_1.add_requirement("This is the third requirement.")
 
-    # req_list_1.all_reqs()
-    print(len(req_list_1))
+    req_list_1.extract_keywords('rakun')
+    print(req_list_1.keywords)
