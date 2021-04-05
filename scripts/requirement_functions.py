@@ -4,13 +4,12 @@
 # # mrakun: https://github.com/SkBlaz/rakun
 # ################################################
 
+import logging
+logging.basicConfig(level=logging.WARNING)
 import numpy as np
 import kex
 from mrakun import RakunDetector
 from nltk.corpus import stopwords
-from scipy.linalg import svd
-import matplotlib.pyplot as plt
-from graphing_functions import make_graph, affinity_propagation_plots, node_adjacency_heat, show_gaussian_overlap
 import spacy
 
 nlp = spacy.load("en_core_web_md")
@@ -120,8 +119,7 @@ def _mrakun_keywords(text, file_out=None, visualize=False):
         "max_occurrence":           3
         }
 
-    keyword_detector = RakunDetector(hyperparameters)
-    keyword_detector.verbose = False
+    keyword_detector = RakunDetector(hyperparameters, verbose = False)
     kw = keyword_detector.find_keywords(text, input_type='text')
     keywords = set([word[0] for word in kw])
 
@@ -149,6 +147,9 @@ def _get_keywords(text):
     kw_mrakun = _mrakun_keywords(text)
 
     return kw_kex.union(kw_mrakun)
+
+    # return kw_kex
+    # return kw_mrakun
 
 
 def _get_requirement_keywords(requirements):
@@ -394,38 +395,4 @@ def gen_similarity_matrix(reqs, measure='cosine'):
 # ########################################################################
 if __name__ == "__main__":
 
-    src = "data/mokammel_requirements.txt"
-    tgt = "output/keyword_lists.txt"
-
-    doc = import_from_txt(src)
-    reqs = doc.split("\n")
-
-    network_layout = "spring"
-    sigma = 'min std'
-
-    A1 = gen_keyword_matrix(reqs)
-    _, _, Vh1 = svd(A1, full_matrices=True)
-    fig1a, ax1a = affinity_propagation_plots(Vh1[:3, :].T, reqs)
-    # fig1a, ax1a = plt.subplots()
-    # ax1a.grid()
-    # ax1a.scatter(x=Vh1[0, :], y=Vh1[1, :])
-    # ax1a.set_xlabel('Vector 1')
-    # ax1a.set_ylabel('Vector 2')
-    # ax1a.set_title('Keyword Similarity')
-    
-    fig1b, ax1b, G1 = generate_graph(Vh1[:2, :], sigma=sigma)
-    ax1a.set_title("Keyword Clusters")
-    ax1b.set_title("Keyword Network")
-    node_adjacency_heat(G1, layout=network_layout)
-    show_gaussian_overlap(Vh1[:2, :], sigma=sigma)
-
-    A2 = gen_similarity_matrix(reqs, measure='jaccard')
-    _, _, Vh2 = svd(A2, full_matrices=True)
-    fig2a, ax2a = affinity_propagation_plots(Vh2[:3, :].T, reqs)
-    fig2b, ax2b, G2 = generate_graph(Vh2[:2, :])
-    ax2a.set_title("Similarity Clusters")
-    ax2b.set_title("Similarity Network")
-    node_adjacency_heat(G2, layout=network_layout)
-    show_gaussian_overlap(Vh2[:2, :], sigma=sigma)
-
-    plt.show()
+    pass

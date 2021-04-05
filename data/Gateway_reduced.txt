@@ -1,0 +1,100 @@
+be capable of launching modules on a commercial launch vehicle or as aCo-manifested Payloads (CPL) on the Space Launch System (SLS).
+use docking systems compliant with the DSG-SPEC-MECH-017 GatewayProgram Docking System Specification.
+have a minimum of four Gateway Docking System compliant docking portsavailable for non-permanent use in any combination of radial or axial configurations.
+use Solar Electric Propulsion (SEP).
+be placed and operate in a near-rectilinear halo orbit (NRHO).
+be capable of performing a single round trip transfer to Distant RetrogradeOrbit (DRO) and back within 11 months.
+provide a fuel capacity that would support performing a minimum of tworound-trip uncrewed low-energy cislunar orbit transfers between a near-rectilinear halo orbit(NRHO) and a distant retrograde orbit (DRO) and orbit maintenance for a period of 15 yearsbetween refueling <TBR-HEOR-002>.
+operate, during lunar flyby operations, at an altitude no less than 100 kmduring lunar flyby operations. <TBR-L2-GW-003>
+operate in an orbit that limits the time during perilunepassage, below 10,000 km but not lower than 1500 km altitude, above the lunar surface to lessthan 8 consecutive hours.
+provide a mission life capability for each module of at least 15 years afterdeployment.
+support a crew of two, three, and four.
+accommodate crew for a minimum of 30 continuous days independent ofvisiting crew vehicle's systems and consumables.
+be capable of uncrewed operations for up to 3 continuous years <TBRHEOR-001> without resupply.
+remotely transition from an uncrewed state to accommodate a safe crewingress.
+The Gateway SLS Co-Manifested modules shall have a launch mass not exceeding 9000 kg.
+have module launch masses not exceeding those in Table 3.2.3-1, GatewayElement Launch Masses <TBR-L2-GW-004>.
+protect far side of the moon as a unique radio science location.
+operate internal systems, required to maintain control of the Gateway, duringand after exposure to pressures from nominal operation pressures down to zero psi, within<TBD-L2-GW-003> minutes (or a depress rate), for a duration up to <TBD-L2-GW-004> hours.
+accommodate automated delivery of logistics cargo and payloads.
+allow for safe disposal of the on-orbit Gateway, to preclude the generation ofspace debris, at the end of its useful life.
+comply with applicable requirements in DSG-SPEC-GNC-009, GatewayProgram Subsystem Specification for Guidance, Navigation and Control (GNC).
+manage the mass properties for the integrated stack, from initial deploymentthrough operational capabilities for the purposes of bounding the center of mass, moments andproducts of inertia and total mass to enable integrated stack rotational and translational control.
+change the Gateway attitude to any orientation (as needed) to meetoperational constraints for all configurations.
+provide integrated attitude control services for the integrated stack.
+acquire and process navigation data onboard to determine absoluteposition/velocity without communications with the earth.
+The Gateway must be able to operate for 21 days without ground communications, driving theEarth independence requirement.
+incorporate an Absolute Attitude Determination capability.
+incorporate an Absolute Navigation State Determination capability.
+provide integrated vehicle translational control for the integrated stack.
+control attitude and attitude rates, within <TBD-L2-GW-001>.
+limit maximum magnitude of linear rigid-body acceleration at the integratedstack center of gravity during integrated vehicle translations to 0.1g.
+support autonomous docking, undocking, berthing, and unberthing of VisitingVehicle and modules while there are no crew present on the arriving/departing module orGateway.
+provide docking targets as defined in the DSG-SPEC-GNC-009, GatewayProgram Subsystem Specification for GNC.
+be on-orbit refuelable for both Xenon and Hydrazine propellants.
+use a monopropellant hydrazine propulsion system.
+comply with applicable requirements in DSG-SPEC-COMM-005, GatewayProgram Subsystem Specification for Communications.
+incorporate modular, reconfigurable communication systems to supportexpandability and extensibility for additional capabilities.
+comply with spectrum selection/allocation, certification, and usage restrictionpolicies set forth in NPD 2570.5, NASA Electromagnetic (EM) Spectrum Management Document.
+implement security functions and controls for a high potential impact system utilizing NIST Special Publication 800-53, Security and Privacy Controls for Federal InformationSystems and Organizations or approved international equivalent.
+provide spherical coverage for the different mission phases and links,excluding non-Gateway structural blockage, as given in Table 3.2.6-1, Data Download Volumeto Earth <TBR-L2-GW-018>.
+communicate with Earth for data exchange and radiometric tracking.
+support a minimum of 3 simultaneous RF communication links.
+communicate with Earth without placing constraints on flight attitudes duringnominal operations.
+support at least 7.49 Tbits per day (~935 GB per day) data downlinkcapacity to Earth.
+communicate with Lunar Systems.
+support at least 1.62 Terabits (TBs) per day data transfer from LunarSystems.
+have the capability to communicate with at least 2 Lunar Systemssimultaneously.
+provide integrated communications services for all docked modules/vehicles.
+communicate with Visiting Vehicle for data exchange and radiometrictracking.
+support direct voice communications between crewed spacecraft duringproximity operations.
+provide an antenna and RF electronics connecting to visiting vehicles toprovide communications coverage during Rendezvous, Proximity Operations, and Docking (RPOD).
+provide internal and external wireless communications.
+support internal voice communications between Gateway crew and groundoperators.
+communicate with up to 4 EVA crewmembers.
+comply with applicable requirements in DSG-SPEC-VSM-003, GatewayProgram Subsystem Specification for Vehicle System Manager (VSM).
+provide a VSM to manage the Gateway modules and coordinate with crewand ground controllers.
+provide for autonomous operations for up to 21 continuous daysindependent of ground communications, with or without crew.
+curate data based on priorities and events.
+comply with applicable requirements in DSG-SPEC-FSW-014, GatewayProgram Subsystem Specification for Software.
+transport data required for vehicle operations.
+capture data required for recovery of vehicle systems.
+detect, report, and annunciate faults for alerts, caution, warning, andemergency events to the on-orbit crew (IVA and EVA), lunar-surface crew, Earth (e.g. controlcenters), Visiting Vehicle, and/or autonomous operations.
+be able to update executable Flight Software (FSW) and configuration datato support ongoing vehicle operations and configurations.
+provide the capability for humans to remotely monitor, operate, and controlthe crewed system and subsystems, where:a. The remote capability is necessary to execute the mission; orb. The remote capability would prevent a catastrophic event; orc. The remote capability would prevent an abort.
+have FSW that performs maintenance tasks to limit required periodicservicing of the software by ground and crew.
+utilize the Core Flight Software (cFS) as the standard software framework.
+provide the capability to isolate and recover from faults identified duringsystem development or mission operations that would result in a catastrophic event.
+provide the capability for the onboard crew to manually overridesoftware functionality when the transition to manual operation will not cause a catastrophicevent.
+provide the capability for the crew to manuallycontrol the attitude and translation of their crewed space system.
+provide the capability for the crew to monitor, operate, and control thecrewed system and subsystems, where:a. The capability is necessary to execute the mission; orb. The capability would prevent a catastrophic event; orc. The capability would prevent an abort.
+comply with applicable requirements in DSG-SPEC-CDH-004, GatewayProgram Subsystem Specification for Avionics.
+comply with applicable requirements in DSG-SPEC-CHI-018, GatewayProgram Subsystem Specification for Computer Human Interface.
+provide a total of three TTE planes through each inter-module connector for redundancy.
+incorporate a shared data storage system.
+provide shared processing.
+provide crew displays and controls that are operable by a crewmember fromwithin any habitable environment.
+provide internal lighting for the illumination required for all operational tasksdependent on visible light.
+illuminate external surfaces <TBR-L2-GW-014> required for all operationaltasks dependent on external visible light.
+comply with applicable requirements in DSG-SPEC-PWR-011, GatewayProgram Subsystem Specification for Power.
+provide a minimum of 32kW for Gateway use when SEP is inactive.
+conform to the DSG-SPEC-PQS-020, Gateway Electrical Power QualitySpecification Requirements for 120Vdc.
+allow for full use of available array power.
+distribute primary power using two bi-directional power domains to eachaxial docking port.
+implement a redundant 16kW bi-directional primary power pass-through toeach radial docking port.
+provide dc-isolation between the Gateway primary power domains and thesecondary power domains.
+be capable of operating critical systems off of a single power domain.
+provide energy storage capacity capable of supplying a minimum of 32kWduring non-insolation periods of at least 1.5 hrs.
+provide a minimum of 24kW for system use when SEP is active.
+adhere to the Program Element Power Allocation in Table 3.2.10- 1,Gateway Power Allocation and Table 3.2.10-2, EVR Power Allocation.
+reserve a minimum of 4kW power for utilization use.
+be automatically booted to an operational and commandable state with theenergizing of the Ground Support Equipment (GSE), or initial delivery vehicle, or the Gatewayprimary power interface.
+provide a Gateway standard power interface for internal portable electricalequipment including science and IVR.
+comply with applicable requirements in DSG-SPEC-CHI-018, GatewayProgram Subsystem Specification for Computer Human Interface.
+provide imagery to support operations during all mission phases.
+enable two-way private audio and motion imagery communication betweenthe ground and crew.
+provide imagery and associated synchronized audio to the Crew.
+record imagery with associated audio.
+provide imagery with associated audio to Exploration Systems.
+comply with applicable requirements in DSG-SPEC-ECLS-007, GatewayProgram Subsystem Specification for Environmental Control and Life Support System (ECLSS).
+condition the atmosphere in habitable volumes and attached visiting vehiclesto maintain temperature and humidity levels and to provide proper atmosphere circulation withinthe habitable volumes.
