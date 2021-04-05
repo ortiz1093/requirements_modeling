@@ -29,7 +29,7 @@ def visualize_matrix(relation_matrix, requirement_list, plots,
 
 
 # layout options: "circular", "kamada_kawai", "spiral", "random",
-#                 "shell", "spring", "spectral"
+#                 "spring", "spectral"
 plots = ['cluster']
 network_layout = "spring"
 sigma = 'norm std'
@@ -55,8 +55,5 @@ G2 = visualize_matrix(Vh2, reqs, plots, title="Similarity",
 # G3 = combine_graphs(G1, G2)
 # node_adjacency_heat(G3, title="Combined", layout=network_layout)
 
-# TODO: Create class for requirement sets with attributes, graphs, etc.
-# TODO: Migrate scatter plots to plotly
-# TODO: Run on Gateway & old GVSC requirements
 
 print(f"Run-time: {round(time()-t0,2)}s")
