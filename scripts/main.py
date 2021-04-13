@@ -4,6 +4,7 @@ from requirement_functions import import_from_txt, gen_keyword_matrix, \
     gen_similarity_matrix
 from graphing_functions import cluster_plots, make_graph, \
     node_adjacency_heat, show_gaussian_overlap, combine_graphs
+import dill
 
 
 def visualize_matrix(relation_matrix, requirement_list, plots,
@@ -45,15 +46,17 @@ reqs = doc.split("\n")
 
 A1 = gen_keyword_matrix(reqs)
 _, _, Vh1 = svd(A1, full_matrices=True)
-G1 = visualize_matrix(Vh1, reqs, plots, title="Keyword", layout=network_layout)
+G_kw = visualize_matrix(Vh1, reqs, plots, title="Keyword", layout=network_layout)
 
 A2 = gen_similarity_matrix(reqs, measure='cosine')
 _, _, Vh2 = svd(A2, full_matrices=True)
-G2 = visualize_matrix(Vh2, reqs, plots, title="Similarity",
+G_sim = visualize_matrix(Vh2, reqs, plots, title="Similarity",
                       layout=network_layout)
 
-# G3 = combine_graphs(G1, G2)
+G3_comb = combine_graphs(G_kw, G_sim)
 # node_adjacency_heat(G3, title="Combined", layout=network_layout)
 
+with open("requirement_graphs.pkl", "wb") as f:
+    dill.dump([G_kw, G_sim, G3_comb], f)
 
 print(f"Run-time: {round(time()-t0,2)}s")
