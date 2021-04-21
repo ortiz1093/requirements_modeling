@@ -1,0 +1,34 @@
+Gearbox
+The overall gear ratio of the gearbox shall be 295 output rotations for every input rotation.
+The overall mass of the gearbox shall not exceed 1 kg.
+The overall length of the gearbox, including shafts, shall not exceed 90 mm.
+The height of the gearbox shall not exceed 5 cm.
+The width of the gearbox shall not exceed 5 cm.
+The gearbox shall be capable of accepting an input speed of 1000 rpm.
+The gearbox shall be capable of handling an output torque of 10 kg-cm.
+
+Housing
+The outer radius of the housing shall not exceed 25 mm.
+The wall thickness of the housing shall be on the interval 1.5 - 2 mm.
+The inner radius of the housing shall be no less than 20 mm.
+
+Ring gear
+The ring gear shall be press fit into the housing.
+The pitch circle diameter of the ring gear shall be 16 mm.
+
+Drive
+The all drive system gears shall have double helical pattern teeth with helix angle of 35 degrees.
+The diametral pitch of all drive system gears shall be 12 mm.
+The input and output shaft shall be coaxial.
+
+Planetary gear
+The pitch circle diameter of the planetary gears shall be 5 mm.
+
+Sun gear
+The pitch circle diameter of the sun gear shall be 6 mm.
+
+Input shaft
+The diameter of the input shaft shall be 4 mm.
+
+Output shaft
+The diameter of the output shaft shall be 4 mm.
