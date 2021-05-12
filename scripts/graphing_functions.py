@@ -251,7 +251,7 @@ def node_adjacency_heat(G, layout="spring", title=""):
 
 
 def cluster_plots(X, reqs=None, show_labels=True, ax=None,
-                                title="", **kwargs):
+                  title="", **kwargs):
 
     # clusters = AffinityPropagation(damping=0.6, random_state=5).fit(X)
     # centers = clusters.cluster_centers_indices_

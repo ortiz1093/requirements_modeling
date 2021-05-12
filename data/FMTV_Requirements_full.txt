@@ -1,0 +1,672 @@
+3. REQUIREMENTS.
+3.1. System Definition. The basic chassis and models of the FMTV hereinafter referred to as the vehicle shall be
+comprised of components, parts and accessories which meet or exceed the requirements of this specification and
+shall consist of chassis capable of accepting various body configurations to accommodate vehicle missions. All
+vehicles shall meet all requirements in all sections of this ATPD (unless otherwise indicated) in addition to the
+specific requirements in the respective annex for each model:
+3.2. Vehicle Characteristics.
+3.2.1. Performance Characteristics. Performance requirements shall be achieved with all models, with and without
+winch, at gross vehicle weight (GVW), to include all kits unless otherwise specified, but without towed load, unless
+curb weight or gross combination weight (GCW) is specified. All parasitic losses are to be used in performance
+calculations, i.e., fan, alternator losses, etc. Test criteria cited in section 4 of this specification are to be considered
+minimum standards.
+3.2.1.1. Grade Operation. In both forward or reverse gear the vehicle shall be capable of climbing and descending a
+60% longitudinal slope at GVW (VCW for LHS), 30% at GCW, (22% minimum at GCW for wrecker and LWB
+Cargo’s M1085 &amp; M1086, for tractor/ M871 semitrailer combination and LHS/LHS trailer combination) with
+intermediate starts and stops on a dry hard concrete surface free from loose material. There shall be no evidence of
+stalling, slipping, overheating, upsetting, hesitation, leaking of fuels, lubricants or coolants, no loss of mobility or
+stability, and no loss of fuel or oil pressure or flow to the engine while performing these operations. Engine must
+start headed up and down slope. Due to safety concerns, reverse gear shall be at mid-point of test for a minimum
+length of 2 feet.
+3.2.1.2. Side Slope Operation. The vehicle shall be capable of starting and stopping the engine while on, and
+traversing side slopes of up to 30% on a dry, hard concrete surface, free from loose material. There shall be no
+evidence of stalling, slipping, overheating, upsetting, hesitation, leaking of fuels, lubricants or coolants, no loss of
+mobility or stability, and no loss of fuel or oil pressure or flow to the engine while performing these operations.
+3.2.1.3. Steering and Handling. Power steering shall be furnished with capability at rated GVW to turn steered
+wheels to their limits on a stationary vehicle without leakage of power steering fluid. A mechanical connection
+between steering wheel and axle steering mechanisms shall exist under all conditions.
+3.2.1.4. Speed. The vehicles shall be capable of maintaining the following speeds on primary roads:
+The vehicle shall be governed so as not to exceed a speed of 65 mph on level roads.
+3.2.1.5. Turning. The Wall to Wall turning radius for the LMTV shall not exceed 35 feet (11 m) in one continuous
+movement. The Wall to Wall turning radius for the M1083 A1 shall not exceed 40 feet (12 m). Vehicle with stated
+towed items shall be capable of turning, in one continuous movement, two standard NATO 24 X 24 intersection or
+24 X 24 walled intersection (7.3 x 7.3 m) roads at 90°.
+3.2.1.6. Vertical Step. The vehicle (except MTV and LMTV and LHS trailers) shall, at GVW, be capable of
+negotiating a 24 inch (61 cm) minimum vertical step in both forward and reverse directions in a CTIS setting of
+cross country.
+3.2.1.7. Fording. The vehicle shall be capable of operating in fresh and salt water in depths to 30 inch (76 cm)
+without preparation. Fording for 15 minutes shall not cause engine stall, damage or degradation of vehicle
+components, need for maintenance actions nor render the vehicle incapable of performing any operation of this
+specification. Excepted from this requirement are any non-sealed brake components. While fording, the engine shall
+be capable of being restarted when stopped for 10 minutes. Seals shall restrict the entrance of foreign matter into
+bearings which are exposed to contamination during these operations. Water contamination of bearing lubricants
+shall not be more than 2.0% by volume. All bearing seals shall restrict the leaking of lubricants from the bearings.
+Water contamination of engine, brake fluid, transmission, transfer transmission, power steering pump, fuel tank(s)
+and all differentials shall not exceed 2.0% by volume. Vented components shall be vented above the 30-inch
+fording line without kit.
+3.2.1.8. Range. The vehicle shall be capable at GCW (wrecker and LHS at GVW) of being operated for at least 300
+miles (483 km) on highway from integral fuel capacity at an average convoy speed of not less than 25 mph (40
+km/h).
+3.2.1.9. Noise. The exterior noise shall not be greater than 83 dB (A) at a distance of 15 meters from the centerline
+of the vehicle path when measured according to the procedure cited in paragraph 4.7.8. Interior steady-state noise at
+each crew position (driver and passengers) in the cab shall be less than 85 dB (A) when PTO driven equipment, not
+normally utilized during vehicle movement, is not in use.
+3.2.1.10. Emissions (Reference 1.2.a). The vehicle shall comply with Environmental Protection Agency (EPA)
+emission regulation/standards for new motor vehicles and new motor vehicle engines in effect at the time of sale of
+the vehicle, except as allowed by EPA exemptions.
+3.2.1.11. Braking. All vehicles (trucks and trailers) shall be equipped with an Anti-lock Brake System (ABS) and
+shall comply with FMVSS 121. Brake linings shall be constructed from non-asbestos materials. The brake system
+shall be comprised of components that will not require maintenance due to corrosion, during durability testing per
+Section 4. The power source for the ABS on the FMTV Trailers shall be full time through a separate circuit on the
+FMTV Truck with the backup power through the stop lamp circuit. Trailer brake system shall operate when towed
+by non-ABS equipped trucks. In the event of an ABS failure, vehicle shall be able to continue the mission using the
+standard air-brake system for service brakes. ABS indicator lights on the trailer as per FMVSS 121 will not be
+required due to the vehicle tactical requirements.
+3.2.1.11.1. Service Brakes. The service brakes shall control and hold the vehicle on a dry hard surface 60% grade,
+when headed up or down slope. On a dry hard level road that is free from loose material, application of the service
+brakes shall bring the vehicle (at GVW) to a complete stop from a speed of 20 mph (32 km/h) within 32 feet (9.75
+m), measured from the point of brake application. Brake pedal force to achieve above performance shall be within
+that possible by the full range of drivers. Application of service brakes shall cause activation of brake lights to
+include override of emergency flashers unless emergency flashers consist of separate lights. At GVW and GCW the
+vehicle shall pass the Jennerstown Brake tests (IAW TOP 2-2-608); ABS shall be operational on all variants during
+this test.
+3.2.1.11.2. Parking Brake. The parking brake shall be capable of holding the vehicle wheels from rotating where
+braking is applied, at GCW on a 30% grade, headed up or downgrade, on a dry hard surface free from loose
+material. An indicator light shall alert the crew when the parking brake is engaged. The parking brake system shall
+at all times be capable of being applied and released by any driver&#39;s muscular effort and immediately available for
+re-application. Braking energy shall not be dependent on maintenance of air or hydraulic pressure or electrical
+energy.
+3.2.1.11.3. Emergency Brakes. The emergency brake system, in the event of a single point failure in the service
+brake system, shall stop the vehicle at least once on a 30% slope and, after emergency applications per FMVSS 121,
+shall remain engaged until intentionally disengaged by operating personnel. The only exceptions to this are for the
+tractor model when hauling an M871A1/A2 semi-trailer and LHS/LHS trailer at GCW, in which case, it shall meet
+these requirements on a 22% slope. Emergency braking shall include a means of providing adequate vehicle
+stopping in the event of a trailer breakaway.
+3.2.1.11.4. Glad Hands. Glad hands shall be provided at the rear and front of vehicle.
+3.2.1.12. Survivability. Vehicle design shall incorporate consideration of vehicle and crew survivability as follows:
+in general, the design shall protect such vulnerable components as air, fluid, and electrical lines and components by
+routing or placement in areas shielded by heavier components. These and other components critical to vehicle
+operation shall be protected to the extent possible without serious departure from standard automotive design
+principles. Any components exposed up to 40 inches from the ground with the emergency CTIS setting in force, to
+include hoses, cables, lanyards, lines, tanks, valves, wires, cylinders, boxes, shall be shielded or able to withstand,
+going in forward or reverse, with no degradation of vehicle operation: the repeated impact of brush and tree
+branches; dry debris raised by cross country operation; soil scraping at 5 mph.
+3.2.1.12.1. Electromagnetic Emission/Interference. All complete vehicle configurations including basic chassis and
+cab, body assemblies, kits, cranes and ancillary equipment shall continue to function when exposed to emissions
+from Electromagnetic Compatibility (EMC) and Near Strike Lightning (NSL). Emissions from the FMTV shall not
+cause Electromagnetic Interference (EMI) with mission critical equipment located within the FMTV or in the
+surrounding area. EMC Radiated Susceptibility (RS) requirements for external electromagnetic environments for
+Army ground systems are listed in Table I.c of MIL-STD-464. FMTV shall meet the requirements of
+MIL-STD-464, Electrostatic Charge Control section 5.7, NSL Section 5.4 and EMI Section 5.6. All vehicle and kit
+configurations shall not have any inherent Electrostatic Discharge (ESD) characteristics.
+3.2.1.12.2. High Altitude Electromagnetic Pulse (HAEMP). All mission essential functions (6.3.19) shall meet
+operational requirements when fully tested to verify operation, within a maximum of 15 minutes maintenance by the
+crew (using only on-board tools) after exposure to a HAEMP specified in MIL-STD-2169B (S) and QSTAG-244
+Edition 4.
+3.2.1.12.3. Blackout Condition Lighting. Blackout condition lighting shall be provided in accordance with
+MIL-STD-1179. No other vehicle lighting shall be capable of being activated while in the blackout mode except
+where otherwise required by this ATPD.
+3.2.1.13. Mobility. The Material Handling Equipment (MHE) equipped cargo model at GVW plus the equivalent
+weight of a winch in the cargo bed and with all kits must be capable of operating over cross country terrain, primary
+and secondary roads and trails for the appropriate mobility level stated herein under the varied environmental
+conditions encountered. Other FMTV models shall perform to a level appropriate to their GVW. If the MTV cargo
+model with MHE requires CTIS to meet the mobility requirements of 3.2.1.13 and 3.2.1.13.1 then all FMTV models
+shall have CTIS. The mobility characteristics shall equal or exceed those quantified by the following NATO
+Reference Mobility Model (NRMM).
+3.2.1.13.1. Vehicle Cone Index (VCI). The M1084 A1 single pass VCI1 (fine grained) shall have a value no greater
+than 25 at the tire inflation pressure for snow/mud/sand, if CTIS equipped. If not equipped with CTIS, shall permit
+vehicle speeds up to 40 mph for continuous operation on roads, trails, and cross-country. Other FMTV models shall
+perform to a level appropriate to their GVW. The single pass VCI1 (fine grained) at GCW (MTV Cargo with MHE
+towing an MTV Trailer) shall be no greater than 35 at the above tire pressures. The calculated VCI1 (fine grained)
+shall employ the deflection ratio effect algorithms.
+3.2.1.14. Ride Quality. The vehicle shall demonstrate controllability by MOS-designated drivers. In order to
+protect human health, whole body vibration shall meet the requirements of MIL-STD-1472, during testing. The
+vehicle shall attain no more than 6 watts average vertical absorbed power at the driver&#39;s station while negotiating a
+0.7 inch Root Mean Square (RMS) course at speeds up to 25 mph, a 1.0 inch RMS course at speeds up to 17 mph,
+and a 1.5 inch, RMS course at speeds up to 12 mph with the tires at normal cross-country inflation pressure. The
+vehicle shall show no more than 2.5g acceleration at the driver&#39;s station while negotiating half-round obstacles of 8
+inch height at a speed of at least 12 mph, and a 10 inch height at a speed of at least 7 mph, with tires at normal
+cross-country inflation pressure.
+3.2.1.15. Approach and Departure Angles. The approach angle of all models with and without kits and with and
+without winch shall be a minimum of 40°. The departure angle of the basic cargo trucks, with and without kits and
+with and without winch, shall be a minimum of 40°. Approach and departure angles shall be defined in accordance
+with SAE J1100.
+3.2.1.16. Ground Clearance. The vehicle, with and without kits, with tire pressures at highway mode, shall have a
+minimum ground clearance between front and rear tires of not less than 22 inches (56 cm).
+3.2.1.17. Towing. The vehicle shall be capable, on a paved level road under all climatic conditions, of:
+a. Towing a like vehicle (see paragraph 6.3.14) at GVW for a distance of at least 100 miles at a speed of 35 mph,
+without preparation, without degradation or damage to either vehicle. Vehicles shall be capable of towing another
+vehicle (like vehicle and all vehicles required by this specification) using a standard Army Towbar 12424566 (if
+needed), while turning in a wall to wall radius of no more than 40 feet (MTV) and 35 feet (LMTV) without
+interference.
+b. Being towed at GVW by a like vehicle (see paragraph 6.3.14) for a distance of at least 100 miles at a speed of
+35 mph, with all wheels on ground, without preparation, without degradation or damage to either vehicle.
+c. Being lift towed at GVW for a distance of at least 100 miles at a speed of 35 mph, without preparation except
+that the driveshaft(s) to the wheels in contact with the ground shall be removed, without degradation or damage to
+either vehicle.
+3.2.2. Physical Characteristics.
+3.2.2.1. Dimensions. Dimensions shall be defined in accordance with SAE J1100 except for para W103 vehicle
+width, which is redefined as: the maximum dimension measured between the widest points on the vehicle, excluding
+exterior mirrors and marker lamps, but including bumpers, moldings, and sheet metal protrusions. The vehicle
+dimensions for worldwide operation and transportability, shall not exceed those stated in Section 6.
+3.2.2.2. Vehicle Loading. Vehicle weights and loads shall be as defined and specified in Section 6. The LMTV, at
+GVW, shall have the ability to tow an LMTV trailer having a gross weight of 12,000 lb., with a static vertical pintle
+load of 1,200 lb. The MTV, at GVW, shall meet all requirements stated for LMTV, except while towing a trailer
+having a gross weight of 21,000 lb., with a static vertical pintle load of 2,100 lb., and separately, a M198 Howitzer,
+having a gross weight of 16,500 lb.
+3.2.2.3. Protective Coatings and Corrosion Control.
+3.2.2.3.1. Painting. All exterior and interior paint shall be IAW drawing 12420325, including the required metal
+preparation and primers, unless otherwise specified in this ATPD or in the TDP. Unless otherwise specified, color
+for the interior shall be lusterless green #383, and color for the exterior shall have the required color camouflage
+pattern. The appropriate procedure (Method Number IAW drawing 12420325) shall be identified, and shall match
+material being coated and specific application needs (for example, Method 6 is required for surfaces which exceed
+400° F during normal operations). For the vehicle areas identified in the technical data package accompanying this
+solicitation, A-A-52474, GM9984070,GM9984017 or GM9984094 E-coat primer shall be used.
+3.2.2.3.1.1. Paint Control. The following vehicle components shall not be painted or over-treated: 1) the working
+components of the ISO locking hardware; 2) vents for gear boxes/hydraulic reservoirs/fluid containers; 3) winch
+components that would inhibit proper operation; 4) glad-hand or any other color coded assemblies; 5) quick release
+pins for assemblies; 6) outer front axle rubber hub doors;7) door moldings; 8) tires; 9) glass or lenses; 10) gauges or
+indicators and; 11) material whose performance or normal useful service life would be degraded by the application
+of the paint. There shall be no over spray on informational components such as instruction plates. All internal and
+external threads shall be greaseless and free from paint before painting. Painted surfaces shall have a smooth,
+continuous, adherent film that is free of unusual surface imperfections affecting performance or appearance, such as:
+incomplete coverage, runs, sags, or blisters.
+3.2.2.3.2. Protective Coatings. Chip resistant coatings and all application areas shall be approved by the
+Government and shall protect areas subjected to road debris impacts, (i.e., exterior of engine oil pan, wheel wells,
+radiator bottom tank). Rust preventative compounds and application areas shall be approved by the Government and
+shall protect critical areas, (i.e. interior surfaces of structural tubing, boxed-in areas, and all faying surfaces), on
+vehicles to be shipped directly outside continental United States.
+3.2.2.3.3. Corrosion Control Performance. The vehicle shall meet the requirements of the baseline 22-year
+corrosion prevention design of the baseline level III technical data package. The corrosion prevention design of the
+vehicles/trailers shall address vehicle frame, vehicle sub-framing, vehicle cab and support framing, cargo bed and
+support framing, vehicle functional sub-systems, component and part levels, functional mechanisms and vehicle
+paint systems, and shall function through a minimum of 22 years service life (which can include extended periods in
+corrosive environments involving one or more of the following: high humidity, salt spray, road de-icing agents,
+atmospheric contamination, temperature extremes and gravel impingement), without loss to form, fit or function
+caused by corrosion damage and shall not exhibit corrosion products, internally or externally of red, black and/or
+white deposits greater than stage 2 in the army corrosion rating system that can be found on the army corrosion
+website. The corrosion scale is on the website’s training campus and located in the media center module. Only
+normal washing, scheduled maintenance and repair of user induced damage (not a result of deficiency in design,
+material, or manufacturing) shall be necessary to keep the corrosion prevention design in effect.
+3.2.2.3.4. Vehicle Corrosion Evaluation. The vehicle shall be tested and evaluated IAW section 4.7.21.
+3.2.2.3.5. Dissimilar Metals. Dissimilar metals shall be electrically isolated to prevent galvanic corrosion.
+3.2.2.3.6. Non-Skid Surfaces. Surfaces of a vehicle to be used as walkways, working areas or steps that are not
+ridged, grooved or diamond shaped to prevent slipping shall be provided with non-skid protection.
+3.2.3. Reliability Conformance. Each model shall have a reliability no lower than shown in Table I.
+3.2.3.1. RESERVED.
+3.2.3.2. RESERVED.
+3.2.3.3. The LMTV Material Handling Equipment (MHE) shall demonstrate a Reliability of 400 Mean Cycles
+Between Hardware Mission Failures (MCBHMF) at a point estimate.
+3.2.3.4. The MTV Material Handling Equipment (MHE) shall demonstrate a Reliability of 1,800 Mean Cycles
+Between Hardware Mission Failures (MCBHMF) at a point estimate.
+3.2.4. Maintainability. Each model shall have a maintenance ratio (MR) no greater than specified in Table I.
+3.2.5. Engine and Power Train Durability. Each FMTV model shall have a 0.6 probability with a 50% confidence of
+completing 20,000 mi. (32180 km) per the mission profile without a durability failure.
+3.2.5.1. Engine Accessibility. The FMTV shall have a 0.90 probability of removing and reinstalling a replacement
+engine, transmission, or engine and transmission assembly, in less than 12 clock hours by no more than 2 individuals
+plus one crane/wrecker operator for all body styles utilizing existing Army maintenance equipment. There shall be
+easy accessibility to the engine for normal checks and services. The engine configuration described in this section is
+for a &quot;dressed engine&quot; as defined in Section 6.
+3.2.5.2. Oil Sampling. Oil sampling valves (see MIL-V-81940 for guidance) shall be provided in a readily
+accessible location for the engine, transmission, and hydraulic system. The oil sampling valves shall be located
+ahead of the oil filters, and shall be usable while the engine is running. The valves shall be located in such a way as
+to insure that personnel shall not be exposed to danger when taking oil samples with the engine running. Each
+sampling location shall be labeled to identify the source of the sample.
+3.2.6. Chemical Agents Equipment. Dedicated space shall be provided for stowage of troop-installed equipment
+used for detection, protection and decontamination IAW Annex L. All selected locations for equipment storage,
+shall be readily accessible to the crew. When located externally, the equipment shall be protected from normal
+operational hazards. All spaces shall be marked with suitable abbreviations describing the equipment to be stowed
+in the respective spaces.
+3.2.7. Environmental Condition. The vehicle and its systems shall be capable of starting and operating in the
+ambient temperature range of 120o F to -25o F without the use of an arctic kit, and to -50o F with an arctic kit.
+Temperatures shall be recorded 6 feet (1.8 m) above the ground.
+3.2.8. Transportability. The vehicle shall be transportable by highway, rail, marine, and air modes worldwide,
+without special permits. The applicable transportability criteria are set forth in MIL-STD-1366; additional
+transportability guidance can be found in MIL-HDBK-1791. The vehicle curb and gross weight shall include the
+crew for highway transport as a self-propelled vehicle.
+3.2.8.1. Medium Lift Helicopter. The LMTV cargo at rated GVW less crew with payload reduced as necessary and
+the MTV standard cargo without MHE at curb weight less kits and less crew shall be transportable externally by the
+Chinook CH-47D helicopter in an environment of 70o F ambient at 2,000 feet for 30 nautical miles at speeds not to
+exceed 100 knots in accordance with MTMCTEA Pamphlet 70-1. The MTV (except wrecker, LHS, van and
+XM1140 HIMARS Carrier) shall be externally transportable by the CH-53E helicopter, with a payload
+commensurate with the maximum helicopter slingload, in the following environment: 60o F, sea level, for 30
+nautical miles at speeds not to exceed 100 knots. The vehicle shall meet the requirements of MIL-STD-209H, type
+II for helicopter transport.
+3.2.8.2. Cargo Aircraft. The vehicle at GVW less crew shall be capable of being transported on C-130 and C-141
+aircraft. All vehicles except vans, LHS and wrecker shall have a maximum preparation time for air transport of 15
+minutes using only onboard equipment. The expansible van and LMTV van, and LHS shall have a maximum of 60
+minutes of preparation. The wrecker shall meet these requirements within 120 minutes. Times stated are with two
+people (vehicle operators). All equipment removed in order to meet air transportability (except tractor, wrecker,
+expansible van and LMTV van bodies) shall be stowed on the vehicle. The vehicle shall meet the requirements of
+MIL-HDBK-1791 with the exception of the cargo clearance distance from the ceiling changing from 6 inches to 2.5
+inches resulting in a maximum cargo height from 102 inches to 105.5 inches.
+3.2.8.3. Airdrop. The Air Drop (AD) vehicle models, i.e. LMTV Cargo (M1081A1), MTV Cargo (M1093A1),
+MTV Dump (M1094A1), LMTV Cargo Trailer (M1082), and MTV Cargo Trailer (M1095), at maximum allowable
+rigged weight less crew shall be air-droppable while meeting the requirements of MIL-STD-814B. Further
+transportability guidance can be found in MIL-HDBK-669 and MIL-HDBK-1791. The maximum height of the
+vehicle shall not exceed 90 in. (228 cm) for AD models. Vehicles will be adaptable to the airdrop mode in 30
+minutes utilizing hand tools. Vehicles shall meet tip off curve requirements of C-130 and C-141 aircraft as defined
+in MIL-HDBK-1791. The Aft Emergency Restraint requirements of MIL-STD-814B, paragraphs 5.6 and 5.7.5, are
+not applicable to this procurement. Trailer models shall require no hardware modifications to prepare them for air
+drop.
+3.2.8.4. Rail. All vehicle variants (except Van body) shall be designed to meet the dimensional requirements of the
+NATO Envelope B when loaded on 50 in (127 cm) high European flatcars. The vehicle at both GVW and GCW
+(GVW only for tractor, LHS and wrecker ; VCW only for 10 ton Dump) less crew weight shall withstand without
+damage or degradation a military standard rail impact test (paragraph 4.7.31.5) with heaviest pintle-towed load
+attached. Preparation time shall be the same as for transport in Cargo Aircraft (paragraph 3.2.8.2).
+3.2.8.5. Lifting and Tiedown Provisions. The lifting and tiedown provisions, including the connecting structural
+members on the vehicle, at gross rigged weight for airdrop less crew and at GVW (VCW for 10 ton dump), less
+crew shall be in accordance with MIL-STD-209H. Complete diagrams and instructions for lifting and tying down
+the vehicles for the various transport modes shall be provided. Instructions shall be included for component removal
+and subsequent storage when required for transport. Stencil or decal markings IAW drawing 12422122 shall be
+applied to the vehicle at each lifting and tiedown point. The tiedown procedure shall permit tiedown of the vehicles
+to the floor (or deck) of the transport medium in such a manner as to prevent shifting or movement in any direction.
+The vehicle tiedown provisions for railcar tiedown shall consist of four and only four provisions and shall meet the
+requirements of MIL-STD-209H with a tiedown procedure consisting of one and only one tiedown device per each
+tiedown provision per MTMCTEA PAMPHLET 55-19 and AAR Section 6. Dimension D in Figure 5 of
+MIL-STD-209H shall be large enough to accommodate the passage of the necessary number of tiedown devices
+through the tiedown provision.
+3.2.9. Cab. The FMTV cab shall have seating provisions for three (3) crew members when radios/radio mounts are
+not installed, 2 crew members when installed. Doors shall comply with FMVSS 206.
+3.2.9.1. Water Resistance. When assembled, cab and all components shall be waterproof to preclude the entrance of
+water due to rain, melting snow, road splash and the penetration of moisture from all other causes. Vapor material
+shall be applied to prevent the possible accumulation of condensation on the interior of the cab. Seams shall be
+coated with a sealer to provide a waterproof joint.
+3.2.9.2. Vibration Requirements. The cab structure assembly shall pass a 200 hour Government approved
+hydropulse test to include the following installations at a minimum: entire cab structure, door locks and fittings,
+steering column and wheel, instrument panel array including heater and circuit breakers, wipers, washer, mirrors, all
+3 seats with appropriate weights, machine gun ring and simulated gun mass, floor covering, drain plugs, headlights,
+harnesses as needed to connect everything electrical, accelerator pedal, pneumatic controls, chemical alarm and
+standard communications equipment, and fixed glass and seals. It shall also mount on a simulated frame including
+the FMTV front and rear cab mounts. No more than 5% of any of these shall fail the test: cab structure joining
+mechanisms (linear weld, spot welds, bonds of any kind), installed mechanisms or devices.
+3.3. Design and Construction.
+3.3.1. Material. Radioactive materials shall not be used. All materials shall be new and unused. Materials not
+specified shall be selected by the supplier to conform to standards applicable to off-road/construction vehicles. Such
+selected material shall be galvanically compatible with, or insulated from, mating surfaces.
+3.3.1.1. Component Ratings and Specifications. All system components shall be rated and approved by the
+component manufacturer for vehicle application. Existing ratings and specifications shall not be raised nor changed
+with the intention to meet the requirements of this specification.
+3.3.1.2. Flammability of Interior Material. The interior material shall conform to the flammability requirements of
+FMVSS 302.
+3.3.1.3. Material Durability. Nonmetal components shall not deteriorate due to mold, fungus, moisture, repeated
+exposure to bright sunlight, or use while stored in accordance with TM 9-2320-391-20, Section IV, Chapter 2-21.
+3.3.2. Nameplates or Product Marking. Vehicle exterior marking shall be IAW drawing 12422123 for nameplates
+(12420690 for air transport), 12422122 for stencils, as denoted in the TDP for body peculiar stencils or nameplates
+(example, 12412277 for wreckers). Markings shall be lusterless black color #37030 or in other camouflage pattern
+colors if placement of markings in a black area of the pattern is necessary. Instruction, caution, identification,
+operating and data plates shall be provided IAW A-A-50271 and attached by screws bolts, or rivets. Military model
+number, nomenclature, National Stock Number (NSN), contract number, date of manufacture, manufacturer&#39;s serial
+number and US Army Registration number shall be embedded or embossed on an additional metal identification
+plate (see MIL-HDBK-1223 for guidance) and installed in the vehicle crew area in a readily visible location. The
+chassis shall be equipped with instructions, plates or diagrams including procedures to be followed in operating,
+servicing, and, if necessary, assembling the chassis. Decals may be used where attachment by screws, bolts or rivets
+is impractical due to the shape of the object or its location; the attachment method could result in damage to the
+component; or a rigid plate could be a hazard to personnel. Decal material should be IAW with MIL-M-43719,
+General Specifications for Marking Materials and Markers, Adhesive, Elastomeric, Pigmented, or its commercial
+equivalent.
+3.3.2.1. Vehicle Weight Classification Sign Kit. The contractor shall apply the vehicle weight classification
+numbers to each vehicle utilizing a vehicle classification number kit conforming to MIL-S-40626, except that the
+colors used shall be black characters on a background field of green #383. The kit shall be located on the front of
+the vehicle in a location as denoted in the TDP. The contracting officer shall assign the classification numbers to be
+displayed on the vehicle. Instructions for changing the number based on the vehicle configuration shall be provided
+in the operator&#39;s manual.
+3.3.3. Workmanship. Workmanship shall be of the highest grade consistent with the intention of this specification.
+Each vehicle shall have no evidence of cracks, dents, scratches, burrs, sharp edges, loose parts, foreign matter, or
+any other evidence of poor workmanship that shall render the vehicle unsuitable/unsafe for the purpose intended.
+The cab, chassis and bodies shall be designed such that normal vehicle operation does not cause chafing, binding or
+other damage to any harness, hose, control cable, lanyard, tube or line.
+3.3.3.1. Weld Procedure Qualification. Welding procedures shall be developed IAW American Welding Society
+(AWS) IAW AWS C1.3-70, AWS D1.1, AWS D1.2, AWS D1.3, AWS D14.3, or AWS D8.7-88R or similar
+commercial weld codes and submitted for Government approval. The use of pre-qualified weld joints as specified in
+AWS D1.1 does not preclude submittal of welding procedures. Repair welding of defective parts shall require
+Government approval and a written procedure identifying proper technique and approach to correct defective
+product.
+3.3.4. Safety. Exposed components and systems which are subject to high temperatures, high pressures, electrically
+actuated, or inherently hazardous, shall be provided with correct safeguarding and insulating features. Vehicle shall
+comply with all applicable requirements in MIL-STD-1180 for Type I vehicles. Type II seat belts, conforming to
+FMVSS 209 and 210, shall be provided at all 3 crew seating positions.
+3.3.5. Human Engineering. The vehicle shall be operable and maintainable in accordance with MIL-STD-1472 by
+personnel in the following Military Operational Specialties (with special emphasis on restrictive NBC or arctic
+protective [Arctic “trigger finger” mittens] garments under MOPP IV conditions):
+88M Motor Transport Operator
+3.3.5.1. Human Factors. Foot and hand holds that would be convenient for the 5th percentile female through 95th
+percentile male soldier (with combat equipment and in either arctic gear or MOPP-4) to climb into the cab, cargo
+bed, and mission equipment (FMTV variants) from a hard, level, dry surface. These foot and hand holds shall be
+able to adequately support the 95th percentile infantry soldier with full equipment in either arctic gear or MOPP-4
+(up to 300 lbs.) load without causing damage to the vehicle or components. All hand holds and steps necessary for
+the operator and maintenance personnel to gain access to various locations on the vehicle shall be integral to the
+vehicle.
+3.4. Chassis Components.
+3.4.1. Engine. The engines shall be fuel efficient and operate under all conditions specified. The fan clutch shall be
+such that, in the event of failure, the fan shall be constantly engaged. The oil filler tube shall allow the addition of
+oil from a standard 1 quart can without the use of a funnel. An engine governor shall be furnished, set and sealed to
+limit the engine to the manufacturer&#39;s maximum recommended operating RPM. There shall be at least two
+independent controls capable of returning the throttle to idle position, in accordance with FMVSS 124. Engines
+shall incorporate an exhaust brake and have the ability to operate on alternate fuels specified in paragraph 3.4.1.9.
+3.4.1.1. Test Equipment. Built in Test Equipment (BITE) is required for common modes of failure which shall be
+identified on a within-the-cab display providing for rapid operator/ maintainer actions. Data bus communications
+for electronic controlled drivetrain components shall be in accordance with SAE J1939, diagnostics shall be in
+accordance with SAE J1708 and easily upgradeable by software once J1939 diagnostic protocol has been approved
+by industry (SAE committee). There shall be no DCA connector. Information diagnostics as available from
+drivetrain
+ECU’s/ECM’s or SAE J1708 data bus shall be accessible at the on board diagnostic connector. The connector
+for the diagnostic shall be a J1939 Deutsch 9 pin female connector that handles both J1708 and J1939 protocols.
+The connector shall include a cap that keeps the connector dry from water and moisture.
+3.4.1.2. Heavy - Duty Cooling System. A heavy duty cooling system shall be furnished. The cooling system shall
+be capable of retention and recovery of 6% coolant overflow or have 6% expansion reserve capacity. The cooling
+system shall be capable of continuous de-aeration of 0.1 cfm of air per cylinder at rated engine speed at any slope
+the vehicle is required to operate on. The system shall fill completely, with an automatic de-aeration feature to
+preclude air cavitation at any coolant fill rate up to the maximum fill rate. The cooling system shall meet the
+following requirements:
+a. Maintain the specified component operating temperatures within the specified limits while operating
+continuously at full load and 0.6 tractive effort to gross vehicle weight ratio (TE/GVW) while under the maximum
+conditions of 120o F for all models with the exception of the Expansible Van, LHS, Tractor and Wrecker which shall
+meet a minimum of 0.55 TE/GVW while under maximum conditions of 120o F.
+b. Does not exceed temperature limits while operating at rated engine power.
+c. Meets the requirements after a drawdown of 10% of engine coolant. Specified fluid temperatures shall not
+exceed the lower of those for which the component manufacturer shall provide warranty, or the following:
+d. The radiator shall have a maximum of 4 fins per cm and shall be located to minimize air side fouling. Heavyduty
+clamps shall be used, shall be clearly visible, located for ease of connection, and ensure positive sealing. The
+cooling system shall not be comprised of heat exchangers in series in areas prone to fouling.
+3.4.1.3. Engine Coolant. If water-cooled, the engine shall be serviced with a solution of ethylene glycol conforming
+to CID A-A-52624, Type I, and water in equal parts by volume.
+3.4.1.4. Engine Air Induction System. The air induction system as installed shall prevent entrance of foreign matter
+during vehicle operation. The air inlet shall be located to ensure that no water entry during splash and fording shall
+occur. The air inlet shall be located in a low dust area of the dust plume to extend element life. Pre-shaped tubing
+shall be used in the air induction system. An in-cab, resettable, and graduated air filter restriction gauge shall be
+furnished.
+3.4.1.5. Air Cleaner. The vehicle shall incorporate an inertial type air cleaner system that complies with the
+requirements of drawing 12423169 and MIL-PRF-62048, Air Cleaners, Automotive, Heavy Duty and Dry Type;
+except that the 200 hour durability test shall be met at the rated air flow which is defined as the air flow of the
+engine at published engine speed.
+3.4.1.6. Oil Filter. A full flow type oil filter system with integral emergency bypass, IAW the engine manufacturer’s
+specification, shall be furnished to ensure maximum engine protection.
+3.4.1.7. Fuel System. The fuel system shall meet the requirements of FMCSR 393. The fuel delivery system shall
+include an automatic water separator. A fuel preheater shall be provided to ensure satisfactory operation in cold
+climates specified in para 3.2.7.
+3.4.1.8. Fuel Tank(s). Vehicle shall be equipped with corrosion resistant fuel tank(s) (i.e. composites with
+mechanical properties equal to existing fuel tanks or metal tanks with internal rust inhibitors). The dashboard fuel
+level gage shall operate within a 2.5% error rate. Metal fuel lines shall be galvanically insulated from adjacent
+surfaces. Mounting straps used to secure metal tanks to frame/chassis shall also be insulated. The fuel tank/line
+venting system shall not be combined or inter-connected with any other vent system. When more than one tank is
+furnished, fuel level shall equalize in both tanks. A shut-off valve between the 2 tanks shall be furnished. Fuel
+tank(s) shall be provided with drain plug(s) and safety type tank filler caps, captive chained to filler neck strainers,
+which are accessible and removable by personnel wearing arctic mittens. The vehicle shall be able to operate under
+all conditions specified herein with 10 % of the usable fuel remaining. Fuel tank ports must be a minimum of 2.25
+inches (5.7 cm) inside diameter, and shall be compatible with NATO dispensing nozzles having a nominal outside
+diameter of 2 inches (51 mm).
+3.4.1.9. Fuels and Lubricants. Vehicles shall be operable with applicable standard military fuel and lubricants
+without adverse effect on vehicle components and vehicle performance. The vehicle lubricants shall conform to the
+requirements of MIL-PRF-2104, MIL-PRF-2105, QPL-46167, QPL-10924, and QPL-23827. The vehicle’s military
+fuels shall conform to the required fuels specified below.
+3.4.1.9.1. Fuels. The vehicle/engine shall be capable of operating in all environmental conditions, para 3.2.7, on
+primary and alternate fuels (3.4.1.9.1.1 and 3.4.1.9).
+3.4.1.9.1.1. Alternate Fuels. The vehicles shall be capable of continuous operation with MIL-DTL-5624T, grade
+JP5 (in all ambient temperatures) and ASTM D1655, DF1, DF2 &amp; DFA (in all ambient temperatures) without
+adverse impact on reliability, durability or warranty.
+3.4.1.9.2. Lubricating Oils and Greases. The lubrication intervals shall be as required by the component
+manufacturers. A lubrication chart shall be furnished with each vehicle and shall include interchangeable military
+lubricants as well as commercial lubricant designations. Lithium based grease shall be used in corrosion prone areas
+where grease lubrication is required.
+3.4.1.9.3. Hydraulic System. If equipped with a PTO for winch or other driven equipment, the vehicle shall have a
+hydraulic tank and filter system. The tank must be flushable without removal from the chassis. Unused ports shall
+have metal plugs installed. The tank shall include internal filtration. The return line shall exhaust returning oil back
+into the tank below the level of fluid in the tank. Filter and strainer must be removable without dismantling the tank
+from the vehicle.
+3.4.1.10. High Coolant Temperature Warning. The high coolant temperature warning shall be activated when
+coolant temperature is at the warranted operational temperature and in no event shall it fail to activate by the time
+the temperature reaches 5o F above the warranted temperature.
+3.4.2. Exhaust System. The exhaust system shall conform to FMCSR 393.83. The exhaust system as installed shall
+be gas tight and leakproof to prevent the accumulation of exhaust gas in personnel occupied areas. The exhaust
+system shall be so located such that ignition of fuel from fuel system is minimized in the event a leak occurs from
+either system or spillage occurs during refueling. Exhaust mufflers and tail pipes shall be corrosion resistant (i.e.
+fabricated from stainless steel stock) with adequate guards to prevent personnel contact. Also, exhaust system
+mounting brackets and fasteners shall protect against dissimilar metal corrosion. Weather caps shall be provided on
+vertical exhaust stacks.
+3.4.2.1. Toxic Gas Exposure. Operating and maintenance personnel shall not be exposed to concentrations of toxic
+gasses, in accordance with MIL-STD-1472.
+3.4.3. Power Train.
+3.4.3.1. Transmission. The transmission shall meet the requirements of FMVSS 102. The transmission shall shift
+automatically in all forward ranges per SAE J645, and require no operator action uncommon to standard automatic
+transmissions. Exception to automatic shift may be made if manual shift to a single lower gear/range is in lieu of a
+two-speed transfer case, and is necessary only during extremes of the vehicle mission. It must have a gear range
+capable of meeting the performance specification. The main transmission shall include the following:
+3.4.3.1.1. Inhibitor System. A reverse and down shift inhibitor system that prevents driver shift control action from
+overspeeding or damaging engine, transmission, or drive train components.
+3.4.3.1.2. Transmission Filter. The transmission shall have a transmission fluid filter(s) which is replaceable in 1.0
+man-hours or less (for each filter) and a heat exchanger which does not rely on air flow over the transmission, as
+recommended by the transmission manufacturer for the intended application.
+3.4.3.1.3. Transmission Control System. An electronic transmission control system is required that meets the
+HAEMP requirements. A neutral interlock shall be used to insure that vehicle does not start in any forward or
+reverse gear.
+3.4.3.1.4. RESERVED.
+3.4.3.2. Transfer Case. It is required that the transfer case provide torque proportioning full time all wheel drive to
+both the front and rear axles simultaneously. A multi-speed transfer case must possess a neutral range and either
+provide shift-on-the-move capability or a minimum low range speed of at least 25 mph (40 km/h).
+3.4.3.3. Differential. The differentials shall possess adequate strength and durability to perform the required duty
+cycles. If torque biasing is utilized, the rear differentials shall continuously and automatically provide output torque
+biasing such that without wheel slip and during turns they are capable of delivering continuously variable
+unequal/equal torque to both wheels. The torque biasing shall not affect the 50-50 torque division on turns or on
+irregular terrain where required.
+3.4.4. Frame. Frame rails shall be of a 110 ksi minimum steel design. The frames shall employ structural members
+which provide optimum section efficiency for torsional and bending stiffness. Frame shall be of a design to prevent
+permanent torsional warping, twist and deflection due to bending throughout the operating profile of the vehicle.
+(see Table III-IX).
+3.4.5. Suspension.
+3.4.5.1. Suspension and Axles. The vehicle shall be equipped with front and rear axle(s) and suspension system
+with components having a rated capacity at least equal to the maximum load at GCW that can be imposed on each
+member measured at the ground. The suspension design shall limit the vertical natural frequency of the sprung mass
+to a maximum of 1.5 hertz.
+3.4.5.2. Wheels, Rims, and Tires. Vehicle shall be equipped with single front and single rear wheels on all models.
+Rims and tires shall conform to FMVSS 119, 120, SAE J2014, and SAE or Tire and Rim Association
+recommendations for the type and size tires furnished. A bead-lock feature shall be provided if necessary for low
+pressure operation. All tires, rims and wheels shall be identical for all vehicles, to include trailers except for the
+LHS trailer. The tires shall be tubeless radial ply design with a minimum 10,000 mile (16090 km) life, demonstrate
+good lateral stability for operation on wet highways and have an aggressive tread for good off-road mobility in all
+terrain to include mud, snow and sand. The tire/wheel shall maintain sufficient clearance to accept military style tire
+chains for arctic operations. Lug nuts shall be identical for all vehicles, to include all trailers. A kit shall be
+available for rim covers to protect CTIS components on the wheel exterior. Tire chains are not required to be used
+on the third axle of the Tractor model. Tires shall be of rated capacity at least equal to the load imposed on each tire
+measured at each wheel at the ground. Tires shall be repairable and replaceable at Organizational level. Special
+tools must be identified. A spare tire, wheel/rim assembly, and carrier shall be provided. A mechanical assist
+device shall be provided which shall permit dismounting and restowing of the spare assembly by no more than two
+crew members, one crew member preferred, within 30 minutes. Design shall facilitate inflation, deflation and
+pressure gauging with standard tools. If necessary to meet other requirements, a cab controlled tire
+inflation/deflation system shall be furnished, in accordance with Annex K.
+3.4.5.3. Tire Tread Design. Tire tread design shall be non-directional and have suitable treads to allow the vehicle to
+develop a drawbar pull of 0.4 times the vehicle curb weight on a level clean clay surface (CL in USCS Soil
+Classification System) with a strength of 200 or greater Rating Core Index (RCI) immediately after a 1/2 inch (1.3
+cm) rainfall per hour intensity storm.
+3.4.5.4. Shock Absorber. Control of wheel jounce and rebound dynamics shall be provided consistent with
+suspension system design.
+3.4.6. Steering Lock. The vehicle shall be equipped with a method of securing the steering wheel by utilization of a
+standard padlock and key.
+3.4.7. Windshield. When assembled, cab windshield and seals shall not allow more than 5 drops of water leakage
+past the seals when exposed to a spray of water from a supply source of 10 gpm minimum from a ¾ inch hose at a
+distance of 18 inches (21 inches maximum) for a duration of not less than 3 minutes.
+3.4.7.1. Location. All vehicle glazing shall be located to insure that the area to be defrosted, designated as Area A,
+specified in SAE J382, lies totally on the windshield.
+3.4.7.2. Glazing. All glazing is to be done in accordance with FMVSS 205.
+3.4.7.3. Windshield Wiper and Washers. Vehicle shall be equipped with multi-speed windshield wipers and
+washers meeting requirements of SAE J198, (Windshield Wiper Electric Motor in accordance with P/N 12414349).
+Washer reservoirs shall hold up to 3 quarts of commercial windshield solvent for normal climates. Washer motor
+and system shall be operable down to -50o F when equipped with washer fluid rated down to -50o F. Washer
+reservoir shall not leak when the cab is rotated forward for maintenance.
+3.4.8. Bumpers and Towing Devices. Front bumpers, and front and rear towing devices, shall be provided. Rear
+end protection shall be IAW FMCSR 393.86 to the maximum extent practical while not reducing vehicle/trailer
+departure angles from those specified herein. Bumpers and towing devices shall be fastened to the vehicle frame
+with sufficient structural integrity to withstand vehicle recovery, from the front or rear, and lifting/towing by
+standard Army 5 and 10 Ton wreckers using Army Towbar 12424566. An adjustable swivel pintle assembly, part
+number MS51117-1, 12422829 or 12486046, shall be provided at the rear and positioned to accommodate the
+lunette height of FMTV trailers, Howitzers and pintle- towed trailers currently towed by 1 1/4, 2 1/2 and 5 Ton
+trucks similar to the FMTV. Towing devices shall conform to FMCSR 393.70. Suitable connectors, including 12
+volt electrical connectors at the front and 12 &amp; 24 volt electrical connectors at the rear of the vehicle for activation
+of towed vehicle brake and warning lights, and an air supply for trailer and towed vehicle air or air over hydraulic
+brake system shall be provided. The pintle assembly shall not be more than 4 inches (6 inches for MTV Expansible
+Van) forward of the rearmost part of the vehicle. The mounting of the pintle assembly shall include reinforcements
+(where necessary) to transfer vertical pintle loads of up to 2,100 lb. to the web of the MTV chassis frame, and 1,200
+lb. to the web of the LMTV chassis frame without damage or permanent deformation. Provision for attachment of
+trailer safety chains shall be in conformance with SAE J849 (per truck installation note). Either (a) the vehicle shall
+be compatible with the existing FMTV Howitzer pintle extension kit or (b) the vehicle pintle shall be located and/or
+extended such that the vehicle glad-hands, mud flaps, and rear light carriers are not impacted by trailer turning,
+specifically the M198 Howitzer (towed), both with no detrimental effect on chassis-trailer mobility.
+3.4.9. Heater and Defroster. A personnel heater with defroster louvers and with blower(s) shall be provided which
+meets the cab temperature and heat distribution requirements of para M.1.1 of Annex M at ambient temperatures
+down to -25o F. Blower shall be operable independent of water flow to heater and coolant flow to the heater core
+shall also be controllable over the operational range. Outside fresh air shall be supplied at minimum rate of 1.71 m3
+(60 ft3)/min. Air flow rates for hot-climate operation (temperatures above 32° C (90° F)) shall be supplied at
+minimum rate of 8.2 m3 (305 ft3)/min. Air velocity at each person&#39;s head location shall be adjustable either
+continuously or with not less than three settings (off, low and high) from near zero to at least 120 m (400 ft)/minute.
+Windshield defrosting and defogging system shall conform to MIL-STD-1180, Requirement 103, Class 1 for -25° F.
+3.4.10. Controls and Operating Mechanisms. Manufacturer&#39;s standard controls and operating mechanisms shall
+conform to FMVSS 101, except for the master lighting switch, all lighting functions controlled by the military main
+lighting switch, seatbelt telltale, windshield washer/wiper controls illumination, and engine start/stop designator and
+illumination. MIL-HDBK-1271 shall be used as a guide for symbols to assist identification of military-peculiar
+controls and operating mechanisms and any controls and operating mechanisms other than those required by
+FMVSS 101 when, in the manufacturer’s judgment and with the concurrence of the PCO, use of word identifiers is
+insufficient or impractical.
+3.4.11. Accessories and Equipment. Chassis equipment, not specified herein, furnished as standard commercial
+equipment by the manufacturer, shall be modified as required to meet this specification.
+3.4.12. Rear View Mirrors. Rear view mirrors and convex mirrors shall be provided on each side. Mirrors shall
+conform to FMVSS 111 and FMCSR 393.80. Both sections shall be separately adjustable. The mirror casing shall
+be adjustable and capable of folding toward the body sides, to meet transportability specified dimensional
+requirements of 96 inch (244 cm). The rear view mirror arms shall be re-adjusting and self-indexing without the use
+of tools.
+3.4.13. Drain Plugs. Drain plugs installed in engine, transmission, transfer case, and axles shall be of the magnetic
+type (MS equivalent) and be readily accessible to maintenance personnel.
+3.4.14. Electrical System. Vehicle shall be equipped with a 24 volt D.C., waterproof, electrical system with a 12
+volt D.C. lighting system. Electrical system shall be in accordance with FMCSR 393.27 through 393.33. The 24
+volt D.C. electric power circuits shall conform to the MIL-STD-1275. Reverse polarity protection shall be
+incorporated in the system. All circuit breakers shall be readily accessible manual resetting type, except where
+automatic resetting type is used.
+3.4.14.1. Charging and Regulating System.
+3.4.14.1.1. Alternator. Vehicle shall be equipped with a 100 amp, 12 &amp; 24 volt DC radio suppressed alternator,
+which shall provide sufficient current to operate all electrical components when engine is operating at idle speed, or
+200 amp kit if necessary for the particular model. The 100 amp alternator shall comply with the performance
+requirements of drawing #12420852. The alternator shall be configured to prevent internal alternator corrosion
+during its expected normal service life.
+3.4.14.1.2. Regulating System. Vehicle shall be equipped with a 100 amp dual voltage charging system that will
+provide up to full alternator output on demand to either the 24 volt load requirement, the 12 volt load requirement,
+or any combination thereof, from a single 100 amp, 12 &amp; 24 volt DC alternator and, when mounted, a 200 amp kit.
+The dual voltage control system must be capable of maintaining battery equalization and battery balance when
+batteries are unmatched or in the same state of charge and provide for separate voltage regulation for the batteries of
+each voltage system.
+3.4.14.2. Starter. Vehicle shall be equipped with a starter conforming to A-A-59294. Starter protection shall
+prevent re-engagement of the starter with the engine running. The starter must be capable of re-engaging within two
+seconds (maximum) after the engine is stopped. The starter shall be sufficiently sealed and/or its mounting housing
+sufficiently vented to prevent starter corrosion.
+3.4.14.3. Lighting. All vehicle lights, reflectors, and wiring shall be as specified herein. All vehicle exterior lights
+shall be mounted in protective locations, or protected to preclude any damage when interfacing with other vehicles,
+ancillary equipment, specified herein, or caused by terrain or natural obstacles. Polycarbonate lens shall be provided
+in all lights except sealed beam headlights. Vehicle shall be equipped with lamps, reflective devices, and associated
+equipment in accordance with FMVSS 108, except a) license plate lamps are not required, and b) activation of
+hazard warning lights shall require operation of not more than one switch in addition to the vehicle master power
+switch. All lamps shall be 12 volt and all connections shall be waterproof. Turn signals shall be of the
+self-canceling type. Marker light styles may vary based on the position on the vehicle at which they are used;
+variance shall be interchangeable across all models (for example: all rear marker lights will use the same NSN
+replacement part on all models, however the rear marker lights do not have to be the same as the front marker lights)
+to the maximum extent possible.
+3.4.14.4. Wiring. Wiring shall be in accordance with SAE J1292 and J163. Chassis junction boxes (if required)
+shall be furnished at multiple disconnect points. Unless otherwise specified herein, wiring not protected from
+accidental contact with troops, terrain, or vegetation shall be a minimum of #14 AWG. Wiring shall be coded IAW
+Ordnance Drawing 7070301 except where otherwise indicated. Sufficient spacing and routing and cabling of
+sufficient flexibility shall be utilized to prevent arcing between terminals.
+3.4.14.5. Batteries. Batteries in accordance with MS 52149-2 shall be furnished. Batteries shall be readily
+accessible for service. Negative ground shall be provided. The battery carrier shall not be located where fuel could
+drip on batteries. Battery carrier shall be outside the crew or passenger compartment, enclosed and insulated to
+prevent short-circuiting during maintenance or operation and vented to prevent build-up of gasses. The battery box
+lid and attendant battery casing shall be designed to prevent damage due to normal installation and use and shall seal
+batteries and attendant cabling from external road debris and road/tire spray.
+3.4.14.5.1. Master Electrical Power Switch. A master electrical power switch shall be provided left of and lower
+than the steering column (as observed by driver) to allow the operator to shut off all battery power to the rest of the
+vehicle. The master electrical cutoff shall also turn off the engine before disconnecting electrical power.
+3.4.14.5.2. Remote Start. An additional ignition and start circuit shall be located in the engine compartment. The
+additional switches shall be capable of operating the vehicle&#39;s ignition system without having to enter the cab. The
+circuits shall only be visible and readily accessible when the cab is up. The remote start shall not override the
+master electrical power switch.
+3.4.14.5.3. Limp Home. Vehicle shall be capable of prolonged battery less operation without adverse side effect to
+the vehicle&#39;s electrical system. The vehicle shall determine if the batteries are undercharged to a point where they
+are excessively lowering the operating voltage of the charging system and if so, remove the batteries from the
+charging system. When batteries are outside of the charging system a trickle charge shall be provided to the
+batteries to attempt to bring them up to a charged level.
+3.4.14.5.4. Battery Disconnect. A mechanical switch shall be located in the vicinity of the batteries that is capable
+of safely disconnecting the batteries from the vehicle&#39;s electrical system. The switch shall disconnect the 12 and 24
+volt circuits simultaneously.
+3.4.14.6. Horn. Vehicle shall be equipped with a 12 or 24 volt electric horn. Horn is exempt from EME/EMI
+requirements.
+3.4.14.7. Electrical Connector. Vehicle shall be equipped with all connectors necessary to operate electrical
+components of towed military trailers and all necessary connectors in front of the vehicle to operate electrical
+components of the vehicle when being towed by a like vehicle. Vehicle shall also be equipped with slave receptacle
+for intervehicle cable slave starting with vehicle batteries. The slave receptacle shall be in accordance with
+12342303, and a cap assembly in accordance with 12342306. Waterproof/moisture-proofed with approved potting
+compounds, Packard Type connectors, or equivalent, shall be employed for all electrical connections. All junction
+boxes (interiors) shall be treated with Vapor Chemical Inhibitors (VCI) coating or emitters. Connections located in
+areas not below the fording line or in areas where direct exposure to water is not anticipated (i.e. inside cab) do not
+require waterproof connectors. Connections in areas below the fording line and in areas where direct exposure to
+rain, road spray, and cleaning spray is unavoidable shall be waterproof connectors.
+3.4.14.8. Instruments. The vehicle shall be equipped with gauges/indicators which shall be readily visible to the full
+range of user personnel, adequately lighted for normal operation and with infrared radiation emission levels, when
+lighted for blackout condition operation, in accordance with MIL-STD-1179, except that infrared radiation emission
+levels for those indicator lights which must be red in color shall not exceed 10% of the peak emission level.
+3.4.14.9. Audible Warnings. Audible warning shall sound in the event of low vehicle air pressure.
+3.4.14.10. Ignition Switch. Vehicle shall be equipped with an ignition switch that prevents damage to
+communication/radio and any other electrical/electronic accessories that draw power through the vehicle’s power
+distribution system due to voltage/current spikes while the vehicle starter is engaged. Those components,
+subsystems,
+and/or systems that draw power directly from the vehicle’s batteries will not be protected by the ignition
+switch. Sufficient power from the vehicle’s batteries shall be transmitted to the starter while the ignition switch is
+activated to ensure vehicle start under all climatic conditions.
+3.4.15. Control Cables. If applicable, all control cables going outside the cab shall be of the low friction type
+protected at both ends with adequate seals to prevent entry of moisture and contamination into the support tube and
+to provide a bearing surface for smooth motion of the end rod. Cables shall be routed in such a way as to insure
+freedom of movement in both directions without braiding or kinking.
+3.4.16. Wheel Splash and Stone Throw Protection. Rigid fenders or flexible splash shields shall be installed with
+sufficient clearance for operation while using military standard tire chains (Reference A-A-52507). Protection to the
+rear against rear wheel splash and stone throw shall include anti-sail mud flaps that will not be lifted up by high
+speed air flow and be in accordance with SAE J682. If pinned under wheels or other objects, mudflaps shall tear
+away without causing any damage to supporting structures. Vehicle design shall to the maximum practical extent
+prevent wheel splash and stone throw damage to other parts of the vehicle, i.e., battery compartment; fuel, air and
+hydraulic tanks and components; vehicle framing; electrical, pneumatic and hydraulic tubing; harnesses and
+electrical components; drive train and cooling system; exhaust system; wheels and rims; suspension system. Rear
+light carriers shall be designed or braced to permit emergency use as a step without damage other than fair wear and
+tear.
+3.4.17. Rifle Mount. Vehicles shall be provided with racks/mounts inside the cab for three (3) M16A2/M4 rifles
+with and without the following the following accessories attached:
+a. M203 Grenade Launcher
+b. 30 round clip
+c. Blank adapter
+d. Flash Adapter
+e. MILES Adapter
+Location shall provide ready access for the crewmembers.
+3.4.18. Communication/Intelligence System Equipment. The vehicles shall have space allocations, antenna
+allocations and be structurally designed and built to accept holes and attachment brackets and provide power outlets
+needed to mount, power and operate major components for each/combinations of the AN-VRC 46, 47, and 49 and
+SINCGARS communications systems. Equipment shall be operable from both seating positions inside the cab.
+Typical communication system combinations are listed below:
+a. AN-VRC-46 with one KY-57.
+b. AN-VRC-47 with two KY-57s.
+c. AN-VRC-49 with two KY-57s.
+d. SINCGARS (Single Channel Ground &amp; Airborne Radios) with one KY-57.
+e. SINCGARS with two KY-57s
+3.4.19. Vehicle Winch. Vehicles designated as models with winch (w/w or w/winch) shall have a self-recovery
+winch as specified herein. The vehicle winch shall be front or central mounted for self-recovery for forward
+deployment. The self-recovery winch shall be capable of both forward and rearward deployment. All FMTV
+models shall be configured to accept the vehicle winch which shall include all controls, electrical, hydraulic and
+mechanical linkage as necessary and all items necessary for permanent installation and operation. The winch shall
+be provided with a free spooling capability to permit rapid deployment of the line. The winch shall have sufficient
+braking devices to safely lower and hold its full rated load. Winch braking must be automatic and be fully engaged
+any time the winch is stopped or not in use, and must be essentially released during reel-in operation. With winch
+installed, the vehicle shall meet all approach and departure angles and ground clearance requirements. The winch
+shall provide a minimum specified line pull of 10,000 lb. (4,536 kg) +/-10% (LMTV), and 15,500 lb. (6804 kg) +/-
+10% (MTV) from a bare drum 1st layer (and not less than 50% of that force from the top layer) with a minimum line
+speed of 15 ft/min (5 m) from a bare drum. Winch cable shall be at least 280 feet in length, with a breaking strength
+to exceed 50% above maximum line pull capacity. A device shall be provided and set to prevent damage to any of
+the winching system components or their mating parts. End of wire rope shall be equipped with removable clevis.
+Roller assemblies shall be located at the front of the vehicle to guide the cable. All winch functions, with the
+exception of the free-spooling, shall be controllable from the driver&#39;s position only. Winch free-spooling shall be
+controllable from the winch only. All controls shall be of the dead man type that revert to neutral (except free spool)
+when released. A snatch block shall be provided with the truck to permit using a two part line. Storage for this
+hardware shall be provided. Winch design shall be in compliance with SAE J706. The maximum continuous rating
+shall be such that an 85 meter line pull can be accomplished at 120°F ambient at the top layer line pull rating without
+exceeding a lube oil temperature of 250°F (if hydraulic) or damaging the safety brake.
