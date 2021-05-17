@@ -1,6 +1,10 @@
-import utils as utl
+from . import utils as utl
 import multiprocessing as mp
-from requirement import Requirement
+from .requirement import Requirement
+from numpy.random import default_rng
+import numpy as np
+
+rng = default_rng(42)
 
 
 def process_section(section_data):
@@ -9,9 +13,12 @@ def process_section(section_data):
     print(f'Processing section {header}')
     section_id, section_depth, section_name = utl.parse_header(header)
     section_requirements = utl.parse_section(text)
+
+    req_objs = [Requirement(int(rng.random() * 1e4), section_id, req)
+                for req in section_requirements]
     return (section_id, dict(name=section_name,
                              depth=section_depth,
-                             requirements=section_requirements))
+                             requirements=section_requirements)), req_objs
 
 
 class System:
@@ -22,6 +29,7 @@ class System:
         self.system_tree = None
         self.relation_graphs = None
         self.document_tree = None
+        self.keywords = None
 
         self.process_document(text_document)
 
@@ -38,13 +46,26 @@ class System:
         result = thread_pool.map_async(process_section, sections)
         output = result.get()
 
-        self.document_tree = dict(output)
+        if self.requirements is None:
+            self.requirements = []
 
-        pass
+        self.requirements.extend([req for item in output for req in item[1]])
 
-        # TODO: Extend process_document method to create requirement objects
+        self.document_tree = dict([item[0] for item in output])
+
+        self.extract_system_keywords()
+
         # TODO: Extend process_document method to create relation graphs
         # TODO: Extend process_document method to create system tree
+
+    def extract_system_keywords(self):
+        if self.keywords is None:
+            self.keywords = set()
+
+        for req in self.requirements:
+            self.keywords.update(req.keywords)
+
+        self.keywords = list(self.keywords)
 
     def print_document_tree(self):
         # TODO: Fix print order (i.e. 4.19 should not come before 4.4)
@@ -52,11 +73,25 @@ class System:
             d = sect['depth'] - 1
             name = sect['name']
             print("\t" * d, num, name)
-        pass
+
+    def print_requirements_list(self):
+        print(*[req.text for req in self.requirements], sep="\n")
 
     def generate_keyword_relation_graph(self):
         # TODO: Migrate code to generate keyword relation matrix
         pass
+
+    def create_keyword_matrix(self):
+        m = len(self.keywords)
+        n = len(self.requirements)
+
+        kw_matrix = np.empty([m, n], 'int16')
+        for i, word in enumerate(self.keywords):
+            for j, req in enumerate(self.requirements):
+                kw_matrix[i, j] = req.text.lower().count(word)
+
+        return kw_matrix
+
 
     def generate_semantic_relation_graph(self):
         # TODO: Migrate code to generate semantic relation matrix
@@ -110,4 +145,4 @@ if __name__ == "__main__":
     t0 = time()
     test = System("New Vehicle", doc_txt)
     print("\n\n", f"Processed document in {round(time() - t0, 1)}s")
-    test.print_document_tree()
+    test.print_requirements_list()

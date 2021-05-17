@@ -1,0 +1,56 @@
+3. REQUIREMENTS.
+3.1. System Definition. The basic chassis and models of the FMTV hereinafter referred to as the vehicle shall be
+comprised of components, parts and accessories which meet or exceed the requirements of this specification and
+shall consist of chassis capable of accepting various body configurations to accommodate vehicle missions. All
+vehicles shall meet all requirements in all sections of this ATPD (unless otherwise indicated) in addition to the
+specific requirements in the respective annex for each model:
+3.2. Vehicle Characteristics.
+3.2.1. Performance Characteristics. Performance requirements shall be achieved with all models, with and without
+winch, at gross vehicle weight (GVW), to include all kits unless otherwise specified, but without towed load, unless
+curb weight or gross combination weight (GCW) is specified. All parasitic losses are to be used in performance
+calculations, i.e., fan, alternator losses, etc. Test criteria cited in section 4 of this specification are to be considered
+minimum standards.
+3.2.1.1. Grade Operation. In both forward or reverse gear the vehicle shall be capable of climbing and descending a
+60% longitudinal slope at GVW (VCW for LHS), 30% at GCW, (22% minimum at GCW for wrecker and LWB
+Cargo’s M1085 &amp; M1086, for tractor/ M871 semitrailer combination and LHS/LHS trailer combination) with
+intermediate starts and stops on a dry hard concrete surface free from loose material. There shall be no evidence of
+stalling, slipping, overheating, upsetting, hesitation, leaking of fuels, lubricants or coolants, no loss of mobility or
+stability, and no loss of fuel or oil pressure or flow to the engine while performing these operations. Engine must
+start headed up and down slope. Due to safety concerns, reverse gear shall be at mid-point of test for a minimum
+length of 2 feet.
+3.2.1.2. Side Slope Operation. The vehicle shall be capable of starting and stopping the engine while on, and
+traversing side slopes of up to 30% on a dry, hard concrete surface, free from loose material. There shall be no
+evidence of stalling, slipping, overheating, upsetting, hesitation, leaking of fuels, lubricants or coolants, no loss of
+mobility or stability, and no loss of fuel or oil pressure or flow to the engine while performing these operations.
+3.2.1.3. Steering and Handling. Power steering shall be furnished with capability at rated GVW to turn steered
+wheels to their limits on a stationary vehicle without leakage of power steering fluid. A mechanical connection
+between steering wheel and axle steering mechanisms shall exist under all conditions.
+3.2.1.4. Speed. The vehicles shall be capable of maintaining the following speeds on primary roads:
+The vehicle shall be governed so as not to exceed a speed of 65 mph on level roads.
+3.2.1.5. Turning. The Wall to Wall turning radius for the LMTV shall not exceed 35 feet (11 m) in one continuous
+movement. The Wall to Wall turning radius for the M1083 A1 shall not exceed 40 feet (12 m). Vehicle with stated
+towed items shall be capable of turning, in one continuous movement, two standard NATO 24 X 24 intersection or
+24 X 24 walled intersection (7.3 x 7.3 m) roads at 90°.
+3.2.1.6. Vertical Step. The vehicle (except MTV and LMTV and LHS trailers) shall, at GVW, be capable of
+negotiating a 24 inch (61 cm) minimum vertical step in both forward and reverse directions in a CTIS setting of
+cross country.
+3.2.1.7. Fording. The vehicle shall be capable of operating in fresh and salt water in depths to 30 inch (76 cm)
+without preparation. Fording for 15 minutes shall not cause engine stall, damage or degradation of vehicle
+components, need for maintenance actions nor render the vehicle incapable of performing any operation of this
+specification. Excepted from this requirement are any non-sealed brake components. While fording, the engine shall
+be capable of being restarted when stopped for 10 minutes. Seals shall restrict the entrance of foreign matter into
+bearings which are exposed to contamination during these operations. Water contamination of bearing lubricants
+shall not be more than 2.0% by volume. All bearing seals shall restrict the leaking of lubricants from the bearings.
+Water contamination of engine, brake fluid, transmission, transfer transmission, power steering pump, fuel tank(s)
+and all differentials shall not exceed 2.0% by volume. Vented components shall be vented above the 30-inch
+fording line without kit.
+3.2.1.8. Range. The vehicle shall be capable at GCW (wrecker and LHS at GVW) of being operated for at least 300
+miles (483 km) on highway from integral fuel capacity at an average convoy speed of not less than 25 mph (40
+km/h).
+3.2.1.9. Noise. The exterior noise shall not be greater than 83 dB (A) at a distance of 15 meters from the centerline
+of the vehicle path when measured according to the procedure cited in paragraph 4.7.8. Interior steady-state noise at
+each crew position (driver and passengers) in the cab shall be less than 85 dB (A) when PTO driven equipment, not
+normally utilized during vehicle movement, is not in use.
+3.2.1.10. Emissions (Reference 1.2.a). The vehicle shall comply with Environmental Protection Agency (EPA)
+emission regulation/standards for new motor vehicles and new motor vehicle engines in effect at the time of sale of
+the vehicle, except as allowed by EPA exemptions.
