@@ -3,6 +3,8 @@ import multiprocessing as mp
 from .requirement import Requirement
 from numpy.random import default_rng
 import numpy as np
+import networkx as nx
+import matplotlib.pyplot as plt
 
 rng = default_rng(42)
 
@@ -27,9 +29,9 @@ class System:
         self.doc_text = text_document
         self.requirements = None
         self.system_tree = None
-        self.relation_graphs = None
         self.document_tree = None
         self.keywords = None
+        self.kw_graph = None
 
         self.process_document(text_document)
 
@@ -77,10 +79,6 @@ class System:
     def print_requirements_list(self):
         print(*[req.text for req in self.requirements], sep="\n")
 
-    def generate_keyword_relation_graph(self):
-        # TODO: Migrate code to generate keyword relation matrix
-        pass
-
     def create_keyword_matrix(self):
         m = len(self.keywords)
         n = len(self.requirements)
@@ -92,6 +90,19 @@ class System:
 
         return kw_matrix
 
+    def generate_keyword_relation_graph(self):
+        kw_matrix = self.create_keyword_matrix()
+        self.kw_graph = utl.encode_relationships(kw_matrix)
+
+
+    def show_graph(self, relation):
+        relation_graphs = {
+            'keyword': self.kw_graph
+        }
+
+        G = relation_graphs[relation]
+        title = f"{self.name} Requirements {relation.title()} Relationship Graph"
+        utl.node_adjacency_heatmap(G, title=title)
 
     def generate_semantic_relation_graph(self):
         # TODO: Migrate code to generate semantic relation matrix
@@ -133,7 +144,6 @@ class System:
         # TODO: Function to remove component or subsystem from system
         pass
 
-
 if __name__ == "__main__":
     from time import time
 
@@ -145,4 +155,6 @@ if __name__ == "__main__":
     t0 = time()
     test = System("New Vehicle", doc_txt)
     print("\n\n", f"Processed document in {round(time() - t0, 1)}s")
-    test.print_requirements_list()
+    test.generate_keyword_relation_graph()
+    nx.draw(test.kw_graph)
+    plt.show
