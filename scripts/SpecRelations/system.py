@@ -1,4 +1,5 @@
 from . import utils as utl
+from . import visualization as viz
 import multiprocessing as mp
 from .requirement import Requirement
 from numpy.random import default_rng
@@ -107,7 +108,7 @@ class System:
             G = relation_graphs[relation]
             assert G is not None, f"No {relation.title()} graph has been generated"
             title = f"{self.name} Requirements {relation.title()} Relationship Graph"
-            utl.node_adjacency_heatmap(G, title=title)
+            viz.node_adjacency_heatmap(G, title=title)
 
     def create_similarity_matrix(self, measure='cosine'):
         """
