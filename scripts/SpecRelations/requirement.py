@@ -1,17 +1,13 @@
 # from utils import kex_keywords, mrakun_keywords
 import logging
 logging.basicConfig(level=logging.WARNING)
-from nltk.corpus import stopwords
 import kex
 from mrakun import RakunDetector
-
-stop_words = set(stopwords.words('english'))
-stop_words = stop_words.union(['shall', 'should', 'must'])
-
-# TODO: Remove keyword functions after regex/keywords debugging in utils.py
+from .utils import stop_words
 
 
 def kex_keywords(text, file_out=None):
+    # TODO: Remove kex_keyword function after regex/keywords debugging in utils.py
     """
     Use Kex pkg to obtain keywords from text.
 
@@ -55,6 +51,7 @@ def kex_keywords(text, file_out=None):
 
 
 def mrakun_keywords(text, file_out=None, visualize=False):
+    # TODO: Remove mrakun_keywords function after regex/keywords debugging in utils.py
     """
     Use mrakun pkg to obtain keywords from text.
 

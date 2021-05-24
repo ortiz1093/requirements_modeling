@@ -32,6 +32,7 @@ class System:
         self.document_tree = None
         self.keywords = None
         self.kw_graph = None
+        self.similarity_graph = None
 
         self.process_document(text_document)
 
@@ -52,10 +53,10 @@ class System:
             self.requirements = []
 
         self.requirements.extend([req for item in output for req in item[1]])
-
         self.document_tree = dict([item[0] for item in output])
-
         self.extract_system_keywords()
+        self.generate_keyword_relation_graph()
+        self.generate_similarity_relation_graph()
 
         # TODO: Extend process_document method to create relation graphs
         # TODO: Extend process_document method to create system tree
@@ -94,22 +95,55 @@ class System:
         kw_matrix = self.create_keyword_matrix()
         self.kw_graph = utl.encode_relationships(kw_matrix)
 
-
-    def show_graph(self, relation):
+    def show_graphs(self, relations=None):
         relation_graphs = {
-            'keyword': self.kw_graph
+            'keyword': self.kw_graph,
+            'similarity': self.similarity_graph,
         }
 
-        G = relation_graphs[relation]
-        title = f"{self.name} Requirements {relation.title()} Relationship Graph"
-        utl.node_adjacency_heatmap(G, title=title)
+        relations = relation_graphs.keys() if relations is None else relations
 
-    def generate_semantic_relation_graph(self):
-        # TODO: Migrate code to generate semantic relation matrix
-        pass
+        for relation in relations:
+            G = relation_graphs[relation]
+            assert G is not None, f"No {relation.title()} graph has been generated"
+            title = f"{self.name} Requirements {relation.title()} Relationship Graph"
+            utl.node_adjacency_heatmap(G, title=title)
+
+    def create_similarity_matrix(self, measure='cosine'):
+        """
+        Calculate the similarity between all all requirements in the given set
+        using a user-specified measure.
+
+        Parameters:
+            reqs [list<spacy Doc>]: requirements to be compared pairwise
+            measure [string]: name of measure to be used for calculation
+
+        Return:
+            [np.ndarray<float>]: N x N matrix of the similarity scores calculated
+                                pairwise between every member of reqs, where N is
+                                the number of members in reqs
+        """
+        reqs = [req.text for req in self.requirements]
+        m = len(reqs)
+        similarity_matrix = np.zeros([m, m])
+        for i in range(m):
+            reqA = utl.text2spacy(reqs[i])
+            reqA = utl.remove_stops(reqA)
+            for j in range(i, m):
+                reqB = utl.text2spacy(reqs[j])
+                reqB = utl.remove_stops(reqB)
+                similarity_matrix[i][j] = similarity_matrix[j][i] = utl.similarity(reqA, reqB,
+                                                                                   measure=measure)
+
+        return similarity_matrix
+
+    def generate_similarity_relation_graph(self):
+        # TODO: Migrate code to generate similarity relation matrix
+        similarity_matrix = self.create_similarity_matrix()
+        self.similarity_graph = utl.encode_relationships(similarity_matrix)
 
     def generate_systemic_relation_graph(self):
-        # TODO: Migrate code to generate semantic relation matrix
+        # TODO: Migrate code to generate systemic relation matrix
         pass
 
     def generate_combined_relation_graph(self):
@@ -143,6 +177,7 @@ class System:
     def delete_system_item(self):
         # TODO: Function to remove component or subsystem from system
         pass
+
 
 if __name__ == "__main__":
     from time import time

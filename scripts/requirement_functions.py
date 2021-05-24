@@ -108,18 +108,18 @@ def _mrakun_keywords(text, file_out=None, visualize=False):
 
     word_count = len(text.split())
     hyperparameters = {
-        "distance_threshold":       2,
-        "distance_method":          "editdistance",
-        "num_keywords":             word_count,
-        "pair_diff_length":         2,
-        "stopwords":                stopwords.words('english'),
-        "bigram_count_threshold":   2,
-        "num_tokens":               list(range(1, word_count)),
-        "max_similar":              3,
-        "max_occurrence":           3
-        }
+        "distance_threshold": 2,
+        "distance_method": "editdistance",
+        "num_keywords": word_count,
+        "pair_diff_length": 2,
+        "stopwords": stopwords.words('english'),
+        "bigram_count_threshold": 2,
+        "num_tokens": list(range(1, word_count)),
+        "max_similar": 3,
+        "max_occurrence": 3
+    }
 
-    keyword_detector = RakunDetector(hyperparameters, verbose = False)
+    keyword_detector = RakunDetector(hyperparameters, verbose=False)
     kw = keyword_detector.find_keywords(text, input_type='text')
     keywords = set([word[0] for word in kw])
 
@@ -207,9 +207,9 @@ def _get_consectuive_word_sets(spacy_text):
     """
     N = len(spacy_text)
     sets = []
-    for L in range(1, N+1):
-        for i in range(N+1-L):
-            sets.append(set(spacy_text[i:i+L]))
+    for L in range(1, N + 1):
+        for i in range(N + 1 - L):
+            sets.append(set(spacy_text[i:i + L]))
 
     return sets
 
@@ -323,7 +323,7 @@ def _cosine_similarity(spacy_textA, spacy_textB):
 def _weighted_cosine_similarity(spacy_textA, spacy_textB):
     """
     Calculate the cosine similarity meansure of two spacy objects based on
-    their shared keywords with weighing toward shared consecutive keywords of 
+    their shared keywords with weighing toward shared consecutive keywords of
     increasing number.
 
     Parameters:
@@ -343,7 +343,7 @@ def _weighted_cosine_similarity(spacy_textA, spacy_textB):
 
     maxL = min(len(setsA[-1]), len(setsB[-1]))
 
-    for L in range(1, maxL+1):
+    for L in range(1, maxL + 1):
         pass
 
 

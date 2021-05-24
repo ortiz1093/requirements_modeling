@@ -51,7 +51,7 @@ G_kw = visualize_matrix(Vh1, reqs, plots, title="Keyword", layout=network_layout
 A2 = gen_similarity_matrix(reqs, measure='cosine')
 _, _, Vh2 = svd(A2, full_matrices=True)
 G_sim = visualize_matrix(Vh2, reqs, plots, title="Similarity",
-                      layout=network_layout)
+                         layout=network_layout)
 
 G3_comb = combine_graphs(G_kw, G_sim)
 # node_adjacency_heat(G3, title="Combined", layout=network_layout)

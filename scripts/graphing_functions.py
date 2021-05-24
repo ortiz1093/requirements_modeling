@@ -26,7 +26,7 @@ def _get_clusters(X, algo='Affinity Propagation'):
 
 def _relation_kernel(ptA, ptB, sigma=1):
 
-    return np.exp(-norm(ptA - ptB)**2 / (2*sigma**2))
+    return np.exp(-norm(ptA - ptB)**2 / (2 * sigma**2))
 
 
 def _relation_matrix(pts, sigma='min std'):
@@ -41,7 +41,7 @@ def _relation_matrix(pts, sigma='min std'):
     X, Y = np.meshgrid(pts[0, :], pts[1, :])
 
     norms = np.sqrt((X - X.T)**2 + (Y - Y.T)**2)
-    gaussians = np.exp(-norms**2/(2*sigma**2))
+    gaussians = np.exp(-norms**2 / (2 * sigma**2))
 
     return gaussians
 
@@ -106,12 +106,12 @@ def plot_singular_values(matrix, n_dims=3):
 def _point_gaussian(X, sigma=1, res=250, area=3):
 
     X = np.array(X)
-    N = int(area*sigma*res)
+    N = int(area * sigma * res)
 
-    x_lo = X[0]-area*sigma
-    x_hi = X[0]+area*sigma
-    y_lo = X[1]-area*sigma
-    y_hi = X[1]+area*sigma
+    x_lo = X[0] - area * sigma
+    x_hi = X[0] + area * sigma
+    y_lo = X[1] - area * sigma
+    y_hi = X[1] + area * sigma
 
     u = np.linspace(x_lo, x_hi, N)
     v = np.linspace(y_lo, y_hi, N)
@@ -152,14 +152,14 @@ def get_edge_weights(G):
 def edge_trace(x, y, width):
 
     def squish(x):
-        return float(np.diff(w_rg))*x + w_rg.min()
+        return float(np.diff(w_rg)) * x + w_rg.min()
 
     w_rg = np.array([0.1, 0.7])
 
     return go.Scatter(
         x=x, y=y,
         mode='lines',
-        line=dict(width=1.5*squish(width), color='black')
+        line=dict(width=1.5 * squish(width), color='black')
     )
 
 
@@ -244,8 +244,7 @@ def node_adjacency_heat(G, layout="spring", title=""):
                                    showticklabels=False),
                         yaxis=dict(showgrid=False,
                                    zeroline=False,
-                                   showticklabels=False)
-                        )
+                                   showticklabels=False))
                     )
     fig.show()
 
@@ -296,8 +295,7 @@ def cluster_plots(X, reqs=None, show_labels=True, ax=None,
                     layout=go.Layout(
                         title="<br><b>" + title + "Clustering</b>",
                         titlefont_size=16,
-                        showlegend=False,
-                        )
+                        showlegend=False,)
                     )
 
     scene = dict(camera=dict(eye=dict(x=1.6, y=1.6, z=1)),

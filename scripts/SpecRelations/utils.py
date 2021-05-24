@@ -4,8 +4,39 @@ import numpy as np
 import networkx as nx
 import plotly.graph_objects as go
 from numpy.linalg import norm, eigh
-from gensim.parsing.preprocessing import strip_multiple_whitespaces, \
-    strip_punctuation
+from nltk.corpus import stopwords
+from gensim.parsing.preprocessing import strip_multiple_whitespaces, strip_punctuation
+
+stop_words = set(stopwords.words("english"))
+stop_words = stop_words.union(["shall", "should", "must"])
+
+
+def text2spacy(text):
+    if "NLP" not in globals():
+        global NLP
+        NLP = spacy.load("en_core_web_md")
+
+    return NLP(text)
+
+
+def remove_stops(spacy_obj):
+    """
+    Remove stop words from a spacy obj
+
+    Parameters:
+        spacy_obj [spacy Doc]: text from which to remove stopwords
+
+    Return:
+        [spacy Doc]: text with stopwords removed
+    """
+
+    words = [
+        token.lemma_
+        for token in spacy_obj
+        if not (token.is_stop or token.text in stop_words)
+    ]
+
+    return text2spacy(" ".join(words))
 
 
 def process_text(document):
@@ -16,15 +47,15 @@ def process_text(document):
     return text
 
 
-def parse_document(document, re_pattern='gvsc'):
+def parse_document(document, re_pattern="gvsc"):
     """
     Function to separate a document into its section headers and assoc. text
 
     params:: text document, regex pattern
     returns:: list of (section header, section text) tuples
     """
-    if re_pattern.lower() == 'gvsc':
-        re_pattern = r'^3\.(?:\d+\.)*\s[\w\s\/\-]*\.'
+    if re_pattern.lower() == "gvsc":
+        re_pattern = r"^3\.(?:\d+\.)*\s[\w\s\/\-]*\."
 
     header_pattern = re.compile(re_pattern, re.MULTILINE)
     sections = header_pattern.findall(document)
@@ -34,30 +65,30 @@ def parse_document(document, re_pattern='gvsc'):
     return list(zip(sections[1:], section_texts[1:]))
 
 
-def parse_section(section_text, keywords=('shall', 'should', 'must')):
-    nlp = spacy.load("en_core_web_md")
+def parse_section(section_text, keywords=("shall", "should", "must")):
+    # nlp = spacy.load("en_core_web_md")
 
-    section = nlp(section_text)
-    section_requirements = [sent.text for sent in section.sents
-                            if max(list(
-                                   map(lambda x: sent.text.find(x),
-                                       keywords)
-                                   )) >= 0]
+    section = text2spacy(section_text)
+    section_requirements = [
+        sent.text
+        for sent in section.sents
+        if max(list(map(lambda x: sent.text.find(x), keywords))) >= 0
+    ]
 
     return section_requirements
 
 
 def parse_header(header_text):
-    num, title = header_text.strip().split('. ')
+    num, title = header_text.strip().split(". ")
     section_id, section_depth = process_section_number(num)
 
-    return section_id, section_depth, title.replace('.', '').lower()
+    return section_id, section_depth, title.replace(".", "").lower()
 
 
 def process_section_number(section_number):
     num_arr = strip_punctuation(section_number).strip().split()[1:]
     depth = len(num_arr)
-    section_id = '_'.join(num_arr)
+    section_id = "_".join(num_arr)
 
     return section_id, depth
 
@@ -67,8 +98,8 @@ def radial_basis_kernel(A):
 
     X, Y = np.meshgrid(A[:, 0], A[:, 1])
 
-    norms = np.sqrt((X - X.T)**2 + (Y - Y.T)**2)
-    gaussians = np.exp(-norms**2/(2*sigma**2))
+    norms = np.sqrt((X - X.T) ** 2 + (Y - Y.T) ** 2)
+    gaussians = np.exp(-(norms ** 2) / (2 * sigma ** 2))
 
     return gaussians
 
@@ -108,22 +139,63 @@ def encode_relationships(info_matrix):
     relation_graph = nx.Graph()
     for i in range(n_dims - 1):
         for ii in range(i + 1, n_dims):
-            relation_graph.add_edge(i, ii, color='k', weight=relation_matrix[i][ii])
+            relation_graph.add_edge(i, ii, color="k", weight=relation_matrix[i][ii])
 
     return relation_graph
 
 
-def edge_trace(x, y, width):
+def cosine_similarity(spacy_textA, spacy_textB):
+    """
+    Calculate the cosine similarity meansure of two spacy objects based on
+    their shared keywords.
 
+    Parameters:
+        spacy_textA [spacy Doc]: first text to be compared
+        spacy_textB [spacy Doc]: second text to be compared
+
+    Return:
+        similarity [float]: similarity score calculated between spacy_textA and
+                            spacy_textB
+    """
+
+    wordsA = " ".join([token.lemma_ for token in spacy_textA])
+    wordsB = " ".join([token.lemma_ for token in spacy_textB])
+
+    A = set(wordsA.split())
+    B = set(wordsB.split())
+
+    similarity = len(A & B) / (np.sqrt(len(A)) * np.sqrt(len(B)))
+
+    return similarity
+
+
+def similarity(spacy_textA, spacy_textB, measure="cosine"):
+    """
+    Calculate the similarity between two texts using a user-specified measure.
+
+    Parameters:
+        spacy_textA [spacy Doc]: first text to be compared
+        spacy_textB [spacy Doc]: second text to be compared
+        measure [string]: name of measure to be used for calculation
+
+    Return:
+        [float]: similarity score calculated between spacy_textA and
+                            spacy_textB
+    """
+    similarity_functions = dict(cosine=cosine_similarity)
+
+    # return eval(f"_{measure}_similarity(spacy_textA,spacy_textB)")
+    return similarity_functions[measure](spacy_textA, spacy_textB)
+
+
+def edge_trace(x, y, width):
     def squish(x):
-        return float(np.diff(w_rg))*x + w_rg.min()
+        return float(np.diff(w_rg)) * x + w_rg.min()
 
     w_rg = np.array([0.1, 0.7])
 
     return go.Scatter(
-        x=x, y=y,
-        mode='lines',
-        line=dict(width=1.5*squish(width), color='black')
+        x=x, y=y, mode="lines", line=dict(width=1.5 * squish(width), color="black")
     )
 
 
@@ -146,7 +218,7 @@ def node_adjacency_heatmap(G, layout="spring", title=""):
     for edge in G.edges():
         x0, y0 = pos[edge[0]]
         x1, y1 = pos[edge[1]]
-        e = edge_trace([x0, x1], [y0, y1], G[edge[0]][edge[1]]['weight'])
+        e = edge_trace([x0, x1], [y0, y1], G[edge[0]][edge[1]]["weight"])
         edge_traces.append(e)
 
     node_x = []
@@ -157,37 +229,41 @@ def node_adjacency_heatmap(G, layout="spring", title=""):
         node_y.append(y)
 
     node_trace = go.Scatter(
-        x=node_x, y=node_y,
-        mode='markers+text',
-        hoverinfo='text',
+        x=node_x,
+        y=node_y,
+        mode="markers+text",
+        hoverinfo="text",
         marker=dict(
             showscale=True,
             # colorscale options
             # 'Greys' | 'YlGnBu' | 'Greens' | 'YlOrRd' | 'Bluered' | 'RdBu' |
             # 'Reds' | 'Blues' | 'Picnic' | 'Rainbow' | 'Portland' | 'Jet' |
             # 'Hot' | 'Blackbody' | 'Earth' | 'Electric' | 'Viridis' |
-            colorscale='Viridis',
+            colorscale="Viridis",
             reversescale=True,
             color=[],
             size=25,
             colorbar=dict(
                 thickness=15,
-                title='Node Weight Degree',
-                xanchor='left',
-                titleside='right'
+                title="Node Weight Degree",
+                xanchor="left",
+                titleside="right",
             ),
-            line_width=2))
+            line_width=2,
+        ),
+    )
 
     node_degree = []
     node_hovertext = []
     node_text = []
 
-    weighted_degrees = G.degree(weight='weight')
+    weighted_degrees = G.degree(weight="weight")
     for i, degree in enumerate(weighted_degrees):
         node_degree.append(degree[1])
         node_text.append(str(i).zfill(2))
-        node_hovertext.append(f"Requirement {i}<br>"
-                              f"Wtd Degree: {np.round(degree[1],2)}")
+        node_hovertext.append(
+            f"Requirement {i}<br>" f"Wtd Degree: {np.round(degree[1],2)}"
+        )
 
     node_trace.marker.color = node_degree
     node_trace.hovertext = node_hovertext
@@ -196,30 +272,32 @@ def node_adjacency_heatmap(G, layout="spring", title=""):
     title += " " if title else ""
 
     # Citation: 'https://plotly.com/ipython-notebooks/network-graphs/
-    fig = go.Figure(data=[*edge_traces, node_trace],
-                    layout=go.Layout(
-                        title="<b>" + title + "<br></b>" + "Node Adjacency Heatmap",
-                        titlefont_size=16,
-                        showlegend=False,
-                        hovermode='closest',
-                        margin=dict(b=20, l=5, r=5, t=40),
-                        xaxis=dict(showgrid=False,
-                                   zeroline=False,
-                                   showticklabels=False),
-                        yaxis=dict(showgrid=False,
-                                   zeroline=False,
-                                   showticklabels=False)
-                        )
-                    )
+    fig = go.Figure(
+        data=[*edge_traces, node_trace],
+        layout=go.Layout(
+            title="<b>" + title + "<br></b>" + "Node Adjacency Heatmap",
+            titlefont_size=16,
+            showlegend=False,
+            hovermode="closest",
+            margin=dict(b=20, l=5, r=5, t=40),
+            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+        ),
+    )
     fig.show()
 
 
 if __name__ == "__main__":
-    filepath = "data/FMTV_Requirements_full.txt"
+    # filepath = "data/FMTV_Requirements_full.txt"
 
-    with open(filepath, "r") as f:
-        doc = f.read()
+    # with open(filepath, "r") as f:
+    #     doc = f.read()
 
-    sections = parse_document(doc)
-    section_reqs = parse_section(sections[4][1])
-    pass
+    # sections = parse_document(doc)
+    # section_reqs = parse_section(sections[4][1])
+    # pass
+    orig_text = "Hello, World"
+    output = text2spacy(orig_text)
+    print("Resetting...")
+    del output
+    output = text2spacy(orig_text)
