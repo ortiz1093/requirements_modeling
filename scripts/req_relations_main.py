@@ -8,7 +8,7 @@ filepath = (
 with open(filepath, "r") as f:
     doc_txt = f.read()
 
-fmtv_sys = system.System("FMTV", doc_txt)
-fmtv_sys.show_graphs()
+vehicle = system.System("Vehicle", doc_txt)
+vehicle.show_graphs()
 
 pass

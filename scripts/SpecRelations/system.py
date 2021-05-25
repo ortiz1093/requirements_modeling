@@ -2,10 +2,9 @@ from . import utils as utl
 from . import visualization as viz
 import multiprocessing as mp
 from .requirement import Requirement
+from .tree import Tree
 from numpy.random import default_rng
 import numpy as np
-import networkx as nx
-import matplotlib.pyplot as plt
 
 rng = default_rng(42)
 
@@ -29,11 +28,10 @@ class System:
         self.name = sys_name
         self.doc_text = text_document
         self.requirements = None
-        self.system_tree = None
-        self.document_tree = None
+        self.system_tree = Tree('System Tree')
+        self.document_tree = Tree('Requirements Document Tree')
         self.keywords = None
-        self.kw_graph = None
-        self.similarity_graph = None
+        self.relation_graphs = None
 
         self.process_document(text_document)
 
@@ -50,17 +48,29 @@ class System:
         result = thread_pool.map_async(process_section, sections)
         output = result.get()
 
+        document_dict = dict([item[0] for item in output])
+
         if self.requirements is None:
             self.requirements = []
 
         self.requirements.extend([req for item in output for req in item[1]])
-        self.document_tree = dict([item[0] for item in output])
+        self.populate_document_tree(document_dict)
         self.extract_system_keywords()
         self.generate_keyword_relation_graph()
         self.generate_similarity_relation_graph()
+        self.generate_systemic_relation_graph()
 
         # TODO: Extend process_document method to create relation graphs
         # TODO: Extend process_document method to create system tree
+
+    def populate_document_tree(self, doc_dict):
+        for section, data in doc_dict.items():
+            super_ = '_'.join(section.split('_')[:-1])
+            parent = doc_dict[super_]['name'] if super_ else 'root'
+            self.document_tree.add_node(name=data['name'],
+                                        val=data['requirements'],
+                                        id_=section,
+                                        parent=parent)
 
     def extract_system_keywords(self):
         if self.keywords is None:
@@ -72,11 +82,14 @@ class System:
         self.keywords = list(self.keywords)
 
     def print_document_tree(self):
-        # TODO: Fix print order (i.e. 4.19 should not come before 4.4)
-        for num, sect in sorted(self.document_tree.items()):
-            d = sect['depth'] - 1
-            name = sect['name']
-            print("\t" * d, num, name)
+        print('\n', self.document_tree)
+        # print(self.document_tree)
+        # # TODO: Fix print order (i.e. 4.19 should not come before 4.4)
+        # for num, sect in sorted(self.document_tree.items()):
+        #     d = sect['depth'] - 1
+        #     name = sect['name']
+        #     print("\t" * d, num, name)
+        pass
 
     def print_requirements_list(self):
         print(*[req.text for req in self.requirements], sep="\n")
@@ -93,19 +106,22 @@ class System:
         return kw_matrix
 
     def generate_keyword_relation_graph(self):
+        if self.relation_graphs is None:
+            self.relation_graphs = {}
+
         kw_matrix = self.create_keyword_matrix()
-        self.kw_graph = utl.encode_relationships(kw_matrix)
+        self.relation_graphs['keyword'] = utl.encode_relationships(kw_matrix)
 
     def show_graphs(self, relations=None):
-        relation_graphs = {
-            'keyword': self.kw_graph,
-            'similarity': self.similarity_graph,
-        }
+        # relation_graphs = {
+        #     'keyword': self.kw_graph,
+        #     'similarity': self.similarity_graph,
+        # }
 
-        relations = relation_graphs.keys() if relations is None else relations
+        relations = self.relation_graphs.keys() if relations is None else relations
 
         for relation in relations:
-            G = relation_graphs[relation]
+            G = self.relation_graphs[relation]
             assert G is not None, f"No {relation.title()} graph has been generated"
             title = f"{self.name} Requirements {relation.title()} Relationship Graph"
             viz.node_adjacency_heatmap(G, title=title)
@@ -138,28 +154,54 @@ class System:
 
         return similarity_matrix
 
+    def get_relation_graph(self, relation):
+        return self.relation_graphs[relation]
+
     def generate_similarity_relation_graph(self):
-        # TODO: Migrate code to generate similarity relation matrix
+        if self.relation_graphs is None:
+            self.relation_graphs = {}
+
         similarity_matrix = self.create_similarity_matrix()
-        self.similarity_graph = utl.encode_relationships(similarity_matrix)
+        self.relation_graphs['similarity'] = utl.encode_relationships(similarity_matrix)
+
+    def create_systemic_matrix(self):
+        doc = self.document_tree
+        labels = [doc[req.doc_section].name for req in self.requirements]
+        # labels = [item[0] for req in labeled_requirements for item in req]
+        # doc_items = [section.name for section in doc.nodes_list]
+
+        n_reqs = len(self.requirements)
+        rel_matrix = np.empty((n_reqs, n_reqs))
+        rel_matrix[:] = np.nan
+        for i in range(n_reqs):
+            node_i = doc[labels[i]]
+            for j in range(i, n_reqs):
+                node_j = doc[labels[j]]
+
+                rel_matrix[i, j] = rel_matrix[j, i] = \
+                    doc.distance_between_nodes(node_i, node_j)
+
+        rel_minmax = (rel_matrix - rel_matrix.min()) / (rel_matrix.max() - rel_matrix.min())
+
+        return 1 - rel_minmax
 
     def generate_systemic_relation_graph(self):
         # TODO: Migrate code to generate systemic relation matrix
-        pass
+        if self.relation_graphs is None:
+            self.relation_graphs = {}
+
+        systemic_matrix = self.create_similarity_matrix()
+        self.relation_graphs['systemic'] = utl.encode_relationships(systemic_matrix)
 
     def generate_combined_relation_graph(self):
         # TODO: Migrate code to generate combined relation matrix
-        pass
-
-    def display_relation_graph(self, relation):
-        # TODO: Function to display graph of the specified relation
         pass
 
     def update_graphs(self):
         # TODO: Function to update each graph in the system as changes are made
         pass
 
-    def generate_document_tree(self):
+    def update_document_tree(self):
         # TODO: Migrate code to generate document tree
         pass
 
@@ -191,6 +233,4 @@ if __name__ == "__main__":
     t0 = time()
     test = System("New Vehicle", doc_txt)
     print("\n\n", f"Processed document in {round(time() - t0, 1)}s")
-    test.generate_keyword_relation_graph()
-    nx.draw(test.kw_graph)
-    plt.show
+    test.show_graphs()
