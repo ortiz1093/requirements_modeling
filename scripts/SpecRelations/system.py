@@ -61,7 +61,7 @@ class System:
 
         self.extract_system_keywords()
 
-        self.make_graphs(0)  # Minimum edge weight = 0, defaults to fully connected graph
+        self.make_graphs()  # Defaults to fully connected graphs
 
         # TODO: Extend process_document method to create system tree
 
@@ -73,6 +73,9 @@ class System:
                                         val=data['requirements'],
                                         id_=section,
                                         parent=parent)
+
+    def print_relation_types(self):
+        print(*list(self.relation_graphs.keys()), sep=' | ')
 
     def extract_system_keywords(self):
         if self.keywords is None:
@@ -114,7 +117,7 @@ class System:
         kw_matrix = self.create_keyword_matrix()
         self.relation_graphs['keyword'] = utl.encode_relationships(kw_matrix, minimum_edge_weight, rescale)
 
-    def make_graphs(self, minimum_edge_weight, rescale):
+    def make_graphs(self, minimum_edge_weight=0, rescale=False):
         self.generate_keyword_relation_graph(minimum_edge_weight, rescale)
         self.generate_similarity_relation_graph(minimum_edge_weight, rescale)
         self.generate_contextual_relation_graph(minimum_edge_weight, rescale)
