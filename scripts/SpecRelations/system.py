@@ -44,23 +44,25 @@ class System:
     def process_document(self, text_document):
         sections = utl.parse_document(text_document)
 
+        # Parallel processing for faster results
         thread_pool = mp.pool.Pool(processes=8)
         result = thread_pool.map_async(process_section, sections)
-        output = result.get()
+        processed_document = result.get()
 
-        document_dict = dict([item[0] for item in output])
+        document_dict = dict([section_data[0] for section_data in processed_document])
+        self.populate_document_tree(document_dict)
 
         if self.requirements is None:
             self.requirements = []
 
-        self.requirements.extend([req for item in output for req in item[1]])
-        self.populate_document_tree(document_dict)
-        self.extract_system_keywords()
-        self.generate_keyword_relation_graph()
-        self.generate_similarity_relation_graph()
-        self.generate_systemic_relation_graph()
+        self.requirements.extend(
+            [requirement for section_data in processed_document for requirement in section_data[1]]
+        )
 
-        # TODO: Extend process_document method to create relation graphs
+        self.extract_system_keywords()
+
+        self.make_graphs(0)  # Minimum edge weight = 0, defaults to fully connected graph
+
         # TODO: Extend process_document method to create system tree
 
     def populate_document_tree(self, doc_dict):
@@ -105,18 +107,21 @@ class System:
 
         return kw_matrix
 
-    def generate_keyword_relation_graph(self):
+    def generate_keyword_relation_graph(self, minimum_edge_weight, rescale):
         if self.relation_graphs is None:
             self.relation_graphs = {}
 
         kw_matrix = self.create_keyword_matrix()
-        self.relation_graphs['keyword'] = utl.encode_relationships(kw_matrix)
+        self.relation_graphs['keyword'] = utl.encode_relationships(kw_matrix, minimum_edge_weight, rescale)
 
-    def show_graphs(self, relations=None):
-        # relation_graphs = {
-        #     'keyword': self.kw_graph,
-        #     'similarity': self.similarity_graph,
-        # }
+    def make_graphs(self, minimum_edge_weight, rescale):
+        self.generate_keyword_relation_graph(minimum_edge_weight, rescale)
+        self.generate_similarity_relation_graph(minimum_edge_weight, rescale)
+        self.generate_contextual_relation_graph(minimum_edge_weight, rescale)
+
+    def show_graphs(self, relations=None, minimum_edge_weight=0, rescale=False):
+        if minimum_edge_weight:
+            self.make_graphs(minimum_edge_weight, rescale)
 
         relations = self.relation_graphs.keys() if relations is None else relations
 
@@ -157,18 +162,16 @@ class System:
     def get_relation_graph(self, relation):
         return self.relation_graphs[relation]
 
-    def generate_similarity_relation_graph(self):
+    def generate_similarity_relation_graph(self, minimum_edge_weight, rescale):
         if self.relation_graphs is None:
             self.relation_graphs = {}
 
         similarity_matrix = self.create_similarity_matrix()
-        self.relation_graphs['similarity'] = utl.encode_relationships(similarity_matrix)
+        self.relation_graphs['similarity'] = utl.encode_relationships(similarity_matrix, minimum_edge_weight, rescale)
 
-    def create_systemic_matrix(self):
+    def create_contextual_matrix(self):
         doc = self.document_tree
         labels = [doc[req.doc_section].name for req in self.requirements]
-        # labels = [item[0] for req in labeled_requirements for item in req]
-        # doc_items = [section.name for section in doc.nodes_list]
 
         n_reqs = len(self.requirements)
         rel_matrix = np.empty((n_reqs, n_reqs))
@@ -185,15 +188,14 @@ class System:
 
         return 1 - rel_minmax
 
-    def generate_systemic_relation_graph(self):
-        # TODO: Migrate code to generate systemic relation matrix
+    def generate_contextual_relation_graph(self, minimum_edge_weight, rescale):
         if self.relation_graphs is None:
             self.relation_graphs = {}
 
-        systemic_matrix = self.create_similarity_matrix()
-        self.relation_graphs['systemic'] = utl.encode_relationships(systemic_matrix)
+        contextual_matrix = self.create_similarity_matrix()
+        self.relation_graphs['contextual'] = utl.encode_relationships(contextual_matrix, minimum_edge_weight, rescale)
 
-    def generate_combined_relation_graph(self):
+    def generate_combined_relation_graph(self, minimum_edge_weight, rescale):
         # TODO: Migrate code to generate combined relation matrix
         pass
 

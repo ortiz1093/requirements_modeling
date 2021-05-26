@@ -60,7 +60,7 @@ def node_adjacency_heatmap(G, layout="spring", title=""):
             size=25,
             colorbar=dict(
                 thickness=15,
-                title="Node Weight Degree",
+                title="Weighted Degree",
                 xanchor="left",
                 titleside="right",
             ),
@@ -68,19 +68,26 @@ def node_adjacency_heatmap(G, layout="spring", title=""):
         ),
     )
 
-    node_degree = []
+    node_wtd_degree = []
     node_hovertext = []
     node_text = []
 
+    degrees = G.degree()
     weighted_degrees = G.degree(weight="weight")
-    for i, degree in enumerate(weighted_degrees):
-        node_degree.append(degree[1])
+    for i, (degree, wtd_degree) in enumerate(zip(degrees, weighted_degrees)):
+        significance = wtd_degree[1] / degree[1]
+
+        node_wtd_degree.append(wtd_degree[1])
         node_text.append(str(i).zfill(2))
+
         node_hovertext.append(
-            f"Requirement {i}<br>" f"Wtd Degree: {np.round(degree[1],2)}"
+            f"Requirement {i}<br>"
+            f"Degree: {degree[1]}<br>"
+            f"Wtd Degree: {np.round(wtd_degree[1],2)}<br>"
+            f"Significance: {np.round(significance,2)}"
         )
 
-    node_trace.marker.color = node_degree
+    node_trace.marker.color = node_wtd_degree
     node_trace.hovertext = node_hovertext
     node_trace.text = node_text
 

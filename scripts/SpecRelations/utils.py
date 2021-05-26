@@ -2,7 +2,6 @@ import re
 import spacy
 import numpy as np
 import networkx as nx
-# import plotly.graph_objects as go
 from numpy.linalg import norm, eigh
 from nltk.corpus import stopwords
 from gensim.parsing.preprocessing import strip_multiple_whitespaces, strip_punctuation
@@ -104,17 +103,42 @@ def radial_basis_kernel(A):
     return gaussians
 
 
+def minmax_columns(X):
+    col_mins = np.tile(np.nanmin(X, axis=0), [X.shape[0], 1])
+    col_maxs = np.tile(np.nanmax(X, axis=0), [X.shape[0], 1])
+    return (X - col_mins) / (col_maxs - col_mins)
+
+
+def minmax_rows(X):
+    row_mins = np.tile(np.nanmin(X, axis=1), [X.shape[1], 1]).T
+    row_maxs = np.tile(np.nanmax(X, axis=1), [X.shape[1], 1]).T
+    return (X - row_mins) / (row_maxs - row_mins)
+
+
+def minmax_overall(X):
+    return (X - np.nanmin(X)) / (np.nanmax(X) - np.nanmin(X))
+
+
 def minmax(X, axis=0):
-    return (X - X.min(axis)) / (X.max(axis) - X.min(axis))
+    key = 3 if axis is None else axis
+
+    scale_operation = {
+        0: minmax_columns,
+        1: minmax_rows,
+        3: minmax_overall,
+    }
+
+    return scale_operation[key](X)
 
 
-def pca(X, axis=1, expl_threshhold=None):
-    if axis == 1:
-        covar_uns = X.T @ X
-    elif axis == 0:
-        covar_uns = X @ X.T
+def pca(X, axis=0, expl_threshhold=None):
+    X_scaled = minmax(X, axis=axis)
 
-    covar = minmax(covar_uns)
+    if axis == 0:
+        covar = X_scaled.T @ X_scaled
+    elif axis == 1:
+        covar = X_scaled @ X_scaled.T
+
     L, V = eigh(covar)
 
     if expl_threshhold:
@@ -130,16 +154,23 @@ def pca(X, axis=1, expl_threshhold=None):
     return V
 
 
-def encode_relationships(info_matrix):
-    encoding_matrix = pca(info_matrix)
+def encode_relationships(info_matrix, minimum_edge_weight, rescale):
+    # TODO: Determine why rescale functionality is doubly removing edges after minimum_edge_weight prune. Fix.
+    # TODO: Check if networkx supports adding weighted edges from numpy array versus nested loops
+    encoding_matrix = pca(info_matrix, axis=0)
 
     relation_matrix = radial_basis_kernel(encoding_matrix[:, :2])
+    relation_matrix[relation_matrix < minimum_edge_weight] = np.nan
+    relation_matrix = minmax(relation_matrix, axis=0) + (1 - relation_matrix) * 0.05 if rescale else relation_matrix
     n_dims = relation_matrix.shape[0]
 
     relation_graph = nx.Graph()
     for i in range(n_dims - 1):
         for ii in range(i + 1, n_dims):
-            relation_graph.add_edge(i, ii, color="k", weight=relation_matrix[i][ii])
+            edge_weight = relation_matrix[i][ii]
+            if not np.isnan(edge_weight):
+                # print(edge_weight)
+                relation_graph.add_edge(i, ii, color="k", weight=edge_weight)
 
     return relation_graph
 
@@ -184,120 +215,15 @@ def similarity(spacy_textA, spacy_textB, measure="cosine"):
     """
     similarity_functions = dict(cosine=cosine_similarity)
 
-    # return eval(f"_{measure}_similarity(spacy_textA,spacy_textB)")
     return similarity_functions[measure](spacy_textA, spacy_textB)
 
 
-# def edge_trace(x, y, width):
-#     def squish(x):
-#         return float(np.diff(w_rg)) * x + w_rg.min()
-
-#     w_rg = np.array([0.1, 0.7])
-
-#     return go.Scatter(
-#         x=x, y=y, mode="lines", line=dict(width=1.5 * squish(width), color="black")
-#     )
-
-
-# def node_adjacency_heatmap(G, layout="spring", title=""):
-#     layouts = {
-#         "circular": nx.circular_layout,
-#         "kamada_kawai": nx.kamada_kawai_layout,
-#         "planar": nx.planar_layout,
-#         "random": nx.random_layout,
-#         "rescale": nx.rescale_layout,
-#         "shell": nx.shell_layout,
-#         "spring": nx.spring_layout,
-#         "spectral": nx.spectral_layout,
-#         "spiral": nx.spiral_layout,
-#         "multipartite": nx.multipartite_layout,
-#     }
-
-#     pos = layouts[layout](G)
-#     edge_traces = []
-#     for edge in G.edges():
-#         x0, y0 = pos[edge[0]]
-#         x1, y1 = pos[edge[1]]
-#         e = edge_trace([x0, x1], [y0, y1], G[edge[0]][edge[1]]["weight"])
-#         edge_traces.append(e)
-
-#     node_x = []
-#     node_y = []
-#     for loc in pos.values():
-#         x, y = loc
-#         node_x.append(x)
-#         node_y.append(y)
-
-#     node_trace = go.Scatter(
-#         x=node_x,
-#         y=node_y,
-#         mode="markers+text",
-#         hoverinfo="text",
-#         marker=dict(
-#             showscale=True,
-#             # colorscale options
-#             # 'Greys' | 'YlGnBu' | 'Greens' | 'YlOrRd' | 'Bluered' | 'RdBu' |
-#             # 'Reds' | 'Blues' | 'Picnic' | 'Rainbow' | 'Portland' | 'Jet' |
-#             # 'Hot' | 'Blackbody' | 'Earth' | 'Electric' | 'Viridis' |
-#             colorscale="Viridis",
-#             reversescale=True,
-#             color=[],
-#             size=25,
-#             colorbar=dict(
-#                 thickness=15,
-#                 title="Node Weight Degree",
-#                 xanchor="left",
-#                 titleside="right",
-#             ),
-#             line_width=2,
-#         ),
-#     )
-
-#     node_degree = []
-#     node_hovertext = []
-#     node_text = []
-
-#     weighted_degrees = G.degree(weight="weight")
-#     for i, degree in enumerate(weighted_degrees):
-#         node_degree.append(degree[1])
-#         node_text.append(str(i).zfill(2))
-#         node_hovertext.append(
-#             f"Requirement {i}<br>" f"Wtd Degree: {np.round(degree[1],2)}"
-#         )
-
-#     node_trace.marker.color = node_degree
-#     node_trace.hovertext = node_hovertext
-#     node_trace.text = node_text
-
-#     title += " " if title else ""
-
-#     # Citation: 'https://plotly.com/ipython-notebooks/network-graphs/
-#     fig = go.Figure(
-#         data=[*edge_traces, node_trace],
-#         layout=go.Layout(
-#             title="<b>" + title + "<br></b>" + "Node Adjacency Heatmap",
-#             titlefont_size=16,
-#             showlegend=False,
-#             hovermode="closest",
-#             margin=dict(b=20, l=5, r=5, t=40),
-#             xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-#             yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-#         ),
-#     )
-#     fig.show()
-
-
 if __name__ == "__main__":
-    # filepath = "data/FMTV_Requirements_full.txt"
+    filepath = "data/FMTV_Requirements_full.txt"
 
-    # with open(filepath, "r") as f:
-    #     doc = f.read()
+    with open(filepath, "r") as f:
+        doc = f.read()
 
-    # sections = parse_document(doc)
-    # section_reqs = parse_section(sections[4][1])
-    # pass
-    orig_text = "Hello, World"
-    output = text2spacy(orig_text)
-    print("Resetting...")
-    del output
-    output = text2spacy(orig_text)
+    sections = parse_document(doc)
+    section_reqs = parse_section(sections[4][1])
+    pass
