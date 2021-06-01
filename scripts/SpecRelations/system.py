@@ -10,6 +10,16 @@ rng = default_rng(42)
 
 
 def process_section(section_data):
+    """
+    Function to convert a single document section (previously extracted from parent document) into a list of requirement
+    objects and partitioned section data to be used elsewhere.
+
+    Params::
+        section_data <tuple[str, str]>: Tuple containing the section header w/ title and the body of the section
+
+    Returns::
+        <tuple[str, dict]>, <list[requirement objs]>: (section id, section info dict), list of requirements from section
+    """
     header, text = section_data
 
     print(f'Processing section {header}')
@@ -24,6 +34,24 @@ def process_section(section_data):
 
 
 class System:
+    """
+    Umbrella class with which the software user interacts with directly. Stores all information pertaining to the
+    system under development. Incorporates methods to allow the user to instantiate, modify, and visualize all available
+    aspects of the design.
+
+    Params::
+        sys_name <str>: name of the system in question, should correlate to the instance variable given.
+        text_document <str>: stringified version of requirements document (should use Army GVSC heading patterns)
+
+    Attrs::
+        name <str>: Name fiven to the system by the user
+        doc_text <str>: text version of entire requirements document
+        requirements <list[Requirement]>: list of requirement objects pertaining to the system
+        system_tree <Tree>: tree object to store information relevant to system architecture (currently Not Implemented)
+        document_tree <Tree>: tree object to store information relevant to structure of the requirements document
+        keywords <list[str]>: list of all keywords that are found in at least one requirement
+        relation_graphs <list[nx.Graph]>: graphs for each of the implemented relation types
+    """
     def __init__(self, sys_name, text_document):
         self.name = sys_name
         self.doc_text = text_document
@@ -36,12 +64,31 @@ class System:
         self.process_document(text_document)
 
     def add_requirement(self, id, doc_section, text):
+        """
+        Appends a single requirement to the requirements list.
+
+        Params::
+            id <int>: a unique identifier that can be used to reference the requirement later
+            doc_section <str>: the formatted document section number in which the requirement was located, e.g. '2_3_1'
+            text <str>: text of the requirement
+
+        Returns:: None
+        """
         if self.requirements is None:
             self.requirements = []
 
         self.requirements.append(Requirement(id, doc_section, text))
 
     def process_document(self, text_document):
+        """
+        Processes the requirements document that defines the system, populates system attributes, and generates relation
+        graphs for later viewing.
+
+        Params::
+            text_document <str>: stringified version of requirements document (should use Army GVSC heading patterns)
+
+        Returns:: None
+        """
         sections = utl.parse_document(text_document)
 
         # Parallel processing for faster results
@@ -66,6 +113,16 @@ class System:
         # TODO: Extend process_document method to create system tree
 
     def populate_document_tree(self, doc_dict):
+        """
+        Adds nodes to the Tree object (self.document_tree) representing the document structure which was instatiated at
+        initialization of self.
+
+        Params::
+            doc_dict <dict>: dictionary containing information relevant to each document section
+
+        Returns:: None
+        """
+
         for section, data in doc_dict.items():
             super_ = '_'.join(section.split('_')[:-1])
             parent = doc_dict[super_]['name'] if super_ else 'root'
@@ -75,11 +132,25 @@ class System:
                                         parent=parent)
 
     def print_relation_types(self):
+        """
+        Convenience function to allow user to view the types of relations that are available for viewing and analysis.
+
+        Param:: None
+
+        Returns:: None
+        """
         print(*list(self.relation_graphs.keys()), sep=' | ')
 
     def extract_system_keywords(self):
-        if self.keywords is None:
-            self.keywords = set()
+        """
+        Gets keywords from each requirement in the system and stores one instance of each unique keyword.
+
+        Params:: None
+
+        Returns:: None
+        """
+
+        self.keywords = set() if self.keywords is None else set(self.keywords)
 
         for req in self.requirements:
             self.keywords.update(req.keywords)
@@ -87,19 +158,38 @@ class System:
         self.keywords = list(self.keywords)
 
     def print_document_tree(self):
+        """
+        Prints a formatted string to the terminal which displays the section structure of the requirements document for
+        the system.
+
+        Params:: None
+
+        Returns:: None
+        """
         print('\n', self.document_tree)
-        # print(self.document_tree)
-        # # TODO: Fix print order (i.e. 4.19 should not come before 4.4)
-        # for num, sect in sorted(self.document_tree.items()):
-        #     d = sect['depth'] - 1
-        #     name = sect['name']
-        #     print("\t" * d, num, name)
-        pass
 
     def print_requirements_list(self):
+        """
+        Prints the text of each requirement to the terminal.
+
+        Params:: None
+
+        Returns:: None
+        """
         print(*[req.text for req in self.requirements], sep="\n")
 
     def create_keyword_matrix(self):
+        """
+        Generates the matrix needed to compute keyword relationships between requirements. Each row corresponds to one
+        keyword from self.keywords, each column corresponds to one requirement, and the values indicate the frequency
+        with which each keyword appears in each requirement. Lower bound = 0, no upper bound. Every row will sum to at
+        least 1, since every keyword is guaranteed to be found in at least one requirement.
+
+        Params:: None
+
+        Returns::
+            kw_matrix <ndarray>: 2D array containing frequency values for each keyword (row) in each requirement (col)
+        """
         m = len(self.keywords)
         n = len(self.requirements)
 
@@ -111,6 +201,21 @@ class System:
         return kw_matrix
 
     def generate_keyword_relation_graph(self, minimum_edge_weight, rescale):
+        """
+        Generates a networkX graph object showing keyword relationships between system requirements.
+
+        **NOTE**:   Adjusting minimum edge weight and rescaling will affect certain graph metrics, such as degree,
+                    weighted degree, and others. Therefore, care must be taken when comparing graphs with different
+                    settings.
+
+        Params::
+            minimum_edge_weight <float>: minimum allowable weight for an edge to exist (0 creates fully connected graph)
+            rescale <bool>: Only used if minimum_edge_weight>0. If True, edge weight values are rescaled to the interval
+                            [0, 1] after pruning edges below threshold. If False, edge weights will remain on interval
+                            [minimum_edge_weight, 1].
+        Returns:: None
+        """
+
         if self.relation_graphs is None:
             self.relation_graphs = {}
 
@@ -118,11 +223,37 @@ class System:
         self.relation_graphs['keyword'] = utl.encode_relationships(kw_matrix, minimum_edge_weight, rescale)
 
     def make_graphs(self, minimum_edge_weight=0, rescale=False):
+        """
+        Generates all available system graphs, but does not display to screen. All graphs are provided with the same
+        minimum edge weight and rescale command.
+
+        Params::
+            minimum_edge_weight <float>: minimum allowable weight for an edge to exist (0 creates fully connected graph)
+            rescale <bool>: Only used if minimum_edge_weight>0. If True, edge weight values are rescaled to the interval
+                            [0, 1] after pruning edges below threshold. If False, edge weights will remain on interval
+                            [minimum_edge_weight, 1].
+
+        Returns:: None
+        """
         self.generate_keyword_relation_graph(minimum_edge_weight, rescale)
         self.generate_similarity_relation_graph(minimum_edge_weight, rescale)
         self.generate_contextual_relation_graph(minimum_edge_weight, rescale)
 
     def show_graphs(self, relations=None, minimum_edge_weight=0, rescale=False):
+        """
+        Displays the specified relationship graphs in the default browser, a new tab is opened for each graph. If the
+        default browser has a window already opened, new tabs will be created in the existing window. Otherwise a new
+        browser window is opened. All graphs are provided with the same minimum edge weight and rescale command.
+
+        Params::
+            relations <list[str]>:  a list of the relations to be displayed. If omitted, all relation graphs will be
+                                    displayed.
+            minimum_edge_weight <float>: minimum allowable weight for an edge to exist (0 creates fully connected graph)
+            rescale <bool>: Only used if minimum_edge_weight>0. If True, edge weight values are rescaled to the interval
+                            [0, 1] after pruning edges below threshold. If False, edge weights will remain on interval
+                            [minimum_edge_weight, 1].
+        Returns:: None
+        """
         if minimum_edge_weight:
             self.make_graphs(minimum_edge_weight, rescale)
 
@@ -136,18 +267,19 @@ class System:
 
     def create_similarity_matrix(self, measure='cosine'):
         """
-        Calculate the similarity between all all requirements in the given set
-        using a user-specified measure.
+        Generates the matrix needed to compute similarity relationships between requirements. Each row and column
+        corresponds to one requirement, and the values indicate the semantic similarity between the column requirement
+        and the row requirement. Values are all on the interval [0, 1], with 0 indicating no similarity and 1 indicating
+        identical requirements (e.g. the matrix diagonal will all be 1). Different measures may be implemented for
+        quantifying the similarity.
 
-        Parameters:
-            reqs [list<spacy Doc>]: requirements to be compared pairwise
-            measure [string]: name of measure to be used for calculation
+        Params::
+            measure ['cosine']: name of the similarity measure to be used
 
-        Return:
-            [np.ndarray<float>]: N x N matrix of the similarity scores calculated
-                                pairwise between every member of reqs, where N is
-                                the number of members in reqs
+        Returns::
+            similarity_matrix <ndarray>: 2D array containing similarity values for each pair of requirements.
         """
+
         reqs = [req.text for req in self.requirements]
         m = len(reqs)
         similarity_matrix = np.zeros([m, m])
@@ -163,9 +295,33 @@ class System:
         return similarity_matrix
 
     def get_relation_graph(self, relation):
+        """
+        Provides the user with a means to interact with a specific graph for analysis. Any in-place changes to the graph
+        are retained by the system object, so a copy should be made if this behavior is not desired.
+
+        Params::
+            relation <str>: name of the desired relation graph
+
+        Returns::
+            <nx.Graph> graph object for the specified relation
+        """
         return self.relation_graphs[relation]
 
     def generate_similarity_relation_graph(self, minimum_edge_weight, rescale):
+        """
+        Generates a networkX graph object showing semantic relationships between system requirements.
+
+        **NOTE**:   Adjusting minimum edge weight and rescaling will affect certain graph metrics, such as degree,
+                    weighted degree, and others. Therefore, care must be taken when comparing graphs with different
+                    settings.
+
+        Params::
+            minimum_edge_weight <float>: minimum allowable weight for an edge to exist (0 creates fully connected graph)
+            rescale <bool>: Only used if minimum_edge_weight>0. If True, edge weight values are rescaled to the interval
+                            [0, 1] after pruning edges below threshold. If False, edge weights will remain on interval
+                            [minimum_edge_weight, 1].
+        Returns:: None
+        """
         if self.relation_graphs is None:
             self.relation_graphs = {}
 
@@ -173,6 +329,19 @@ class System:
         self.relation_graphs['similarity'] = utl.encode_relationships(similarity_matrix, minimum_edge_weight, rescale)
 
     def create_contextual_matrix(self):
+        """
+        Generates the matrix needed to compute similarity relationships between requirements. Each row and column
+        corresponds to one requirement, and the values indicate the semantic similarity between the column requirement
+        and the row requirement. Values are all on the interval [0, 1], with 0 indicating no similarity and 1 indicating
+        identical requirements (e.g. the matrix diagonal will all be 1). Different measures may be implemented for
+        quantifying the similarity.
+
+        Params::
+            measure ['cosine']: name of the similarity measure to be used
+
+        Returns::
+            similarity_matrix <ndarray>: 2D array containing similarity values for each pair of requirements.
+        """
         doc = self.document_tree
         labels = [doc[req.doc_section].name for req in self.requirements]
 
@@ -192,6 +361,23 @@ class System:
         return 1 - rel_minmax
 
     def generate_contextual_relation_graph(self, minimum_edge_weight, rescale):
+        """
+        Generates a networkX graph object showing contextual relationships between system requirements. This is the
+        relationship that follows from the relative location of each pair of requirements in the requirements document
+        for the system.
+
+        **NOTE**:   Adjusting minimum edge weight and rescaling will affect certain graph metrics, such as degree,
+                    weighted degree, and others. Therefore, care must be taken when comparing graphs with different
+                    settings.
+
+        Params::
+            minimum_edge_weight <float>: minimum allowable weight for an edge to exist (0 creates fully connected graph)
+            rescale <bool>: Only used if minimum_edge_weight>0. If True, edge weight values are rescaled to the interval
+                            [0, 1] after pruning edges below threshold. If False, edge weights will remain on interval
+                            [minimum_edge_weight, 1].
+
+        Returns:: None
+        """
         if self.relation_graphs is None:
             self.relation_graphs = {}
 
@@ -200,31 +386,31 @@ class System:
 
     def generate_combined_relation_graph(self, minimum_edge_weight, rescale):
         # TODO: Migrate code to generate combined relation matrix
-        pass
+        raise NotImplementedError
 
     def update_graphs(self):
         # TODO: Function to update each graph in the system as changes are made
-        pass
+        raise NotImplementedError
 
     def update_document_tree(self):
         # TODO: Migrate code to generate document tree
-        pass
+        raise NotImplementedError
 
     def generate_system_tree(self):
         # TODO: Migrate code to generate system tree
-        pass
+        raise NotImplementedError
 
     def add_system_item(self):
         # TODO: Function to add component or subsystem to system
-        pass
+        raise NotImplementedError
 
     def delete_requirement(self):
         # TODO: Function to delete requirement from system
-        pass
+        raise NotImplementedError
 
     def delete_system_item(self):
         # TODO: Function to remove component or subsystem from system
-        pass
+        raise NotImplementedError
 
 
 if __name__ == "__main__":

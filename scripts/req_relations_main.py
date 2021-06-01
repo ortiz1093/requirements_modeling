@@ -11,7 +11,7 @@ with open(filepath, "r") as f:
 vehicle = system.System("Vehicle", doc_txt)
 vehicle.print_relation_types()
 
-# vehicle.show_graphs(relations=['similarity'], minimum_edge_weight=0.0, rescale=False)
+vehicle.show_graphs(relations=['similarity'], minimum_edge_weight=0.0, rescale=False)
 # vehicle.show_graphs(relations=['similarity'], minimum_edge_weight=0.9, rescale=False)
 
 pass

@@ -1,8 +1,8 @@
 # Requirements Modeling
 
 ## Download and Installation
-*Only the SpecRelations folder is needed for usage. All other files are deprecated and there functionality is being migrated to the
-SpecRelations files. Once migration is complete, they will be removed from the repo.
+*Only the SpecRelations folder is needed for usage. All other files are deprecated and their functionality is being
+migrated to the SpecRelations files. Once migration is complete, they will be removed from the repo.
 
 Pip is not currently supported. Therefore, to install the package locally, either download the repo as zip file or clone
 to local machine (green button at top of GitHub repo page). DO NOT PUT ENTIRE REPO IN PYTHON PATH.
