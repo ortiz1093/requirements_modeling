@@ -31,46 +31,91 @@ with open(filepath, "r") as f:
     doc_txt = f.read()
 vehicle = system.System("Vehicle", doc_txt)
 ```
-
-Outputs (partial):
 ```
 Processing section 3.1. System Definition.
 Processing section 3.2. Vehicle Characteristics.
 Processing section 3.2.1. Performance Characteristics.
 Processing section 3.2.1.1. Grade Operation.
-...
+---(truncated)---
 ```
 
 Now we can view the list of requirements using:
 ```Python
-vehicle.print_requirements_list()
+>>> vehicle.print_requirements_list()
+
+```
+```
+00) The basic chassis and models of the FMTV hereinafter referred to as the vehicle shall be comprised of components, parts and accessories which meet or exceed the requirements of this specification and shall consist of chassis capable of accepting various body configurations to accommodate vehicle missions.
+
+01) All vehicles shall meet all requirements in all sections of this ATPD (unless otherwise indicated) in addition to the specific requirements in the respective annex for each model.
+
+---(truncated)---
 ```
 
 Or we can view the document structure using:
 ```Python
-vehicle.print_document_tree()
+>>> vehicle.print_document_tree()
+```
+```
+REQUIREMENTS DOCUMENT TREE
+   System Definition
+   Vehicle Characteristics
+      Performance Characteristics
+         Grade Operation
+         Side Slope Operation
+         Steering And Handling
+         Speed
+---(truncated)---
 ```
 
-Both methods print the output to the terminal.
+Output is printed to the terminal.
 
 
 ### Viewing Graphs
 Once the system is instantiated, visualize the graphs with:
 ```Python
-vehicle.show_graphs()
+>>> vehicle.show_graphs()
 ```
 
 This defaults to displaying all available relationship graphs and they will all be fully connected.
 
 To display the graph for a subset of the available relationships, use the keyword argument ``relations``:
 ```Python
-vehicle.show_graphs(relations=['keyword', 'similarity'])
+>>> vehicle.show_graphs(relations=['keyword', 'similarity'])
 ```
+<img src="scripts/SpecRelations/example_images/similarity_graph.PNG" width="600" height="300">
 
 For a full list of available relations, use ```print_relation_types```:
 
 ```Python
-vehicle.print_relation_types()
+>>> vehicle.print_relation_types()
+```
+```
+keyword | similarity | contextual
 ```
 
+### Analyzing Graphs
+To perform analysis on the available graphs, we can return them as networkX Graph objects which allows for any of the networkX methods and algorithms to be used.
+
+To do this, we use the ```get_relation_graph``` method for the system instance and provide with the desired relation type.
+
+```Python
+>>> kw_graph = vehicle.get_relation_graph('keyword')
+>>> import networkx as nx
+>>> nx.closeness_centrality(kw_graph)
+```
+```
+{
+    0: 1.0,
+    1: 1.0,
+    2: 1.0,
+    3: 1.0,
+    5: 1.0,
+    6: 1.0,
+    7: 1.0,
+    9: 0.8571428571428571,
+    10: 1.0,
+    ...
+}
+```
 

@@ -1,4 +1,5 @@
 from SpecRelations import system
+import networkx as nx
 
 filepath = (
     "/mnt/c/Users/jbortiz/GoogleRoot/School/Clemson/Assistantships/VIPR_3.1/Natural_Language_Processing/Code/"

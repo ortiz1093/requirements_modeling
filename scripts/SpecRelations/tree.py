@@ -41,11 +41,6 @@ class Tree:
         return next((node for node in self.nodes_list
                      if node.name == key.upper() or node.id == key), None)
 
-    # def __getitem__(self, name):
-    #     assert self.node_exists(name), "Requested node not found"
-    #     return next((node for node in self.nodes_list
-    #                  if node.name == name.upper()), None)
-
     def __len__(self):
         return len(self.nodes_list)
 

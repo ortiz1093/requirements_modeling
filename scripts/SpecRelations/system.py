@@ -176,7 +176,7 @@ class System:
 
         Returns:: None
         """
-        print(*[req.text for req in self.requirements], sep="\n")
+        print(*[f"{str(i).zfill(2)}) " + req.text + "\n" for i, req in enumerate(self.requirements)], sep="\n")
 
     def create_keyword_matrix(self):
         """
@@ -223,6 +223,8 @@ class System:
         self.relation_graphs['keyword'] = utl.encode_relationships(kw_matrix, minimum_edge_weight, rescale)
 
     def make_graphs(self, minimum_edge_weight=0, rescale=False):
+        # TODO: Make method selective, so that not all graphs are re-built every time
+        # TODO: Store current min_edge_weight so graphs only rebuild if min edge weight different from current
         """
         Generates all available system graphs, but does not display to screen. All graphs are provided with the same
         minimum edge weight and rescale command.
@@ -240,6 +242,7 @@ class System:
         self.generate_contextual_relation_graph(minimum_edge_weight, rescale)
 
     def show_graphs(self, relations=None, minimum_edge_weight=0, rescale=False):
+        # TODO: Refactor so as not to modify and display graphs with same method
         """
         Displays the specified relationship graphs in the default browser, a new tab is opened for each graph. If the
         default browser has a window already opened, new tabs will be created in the existing window. Otherwise a new
@@ -294,7 +297,8 @@ class System:
 
         return similarity_matrix
 
-    def get_relation_graph(self, relation):
+    def get_relation_graph(self, relation, minimum_edge_weight=0, rescale=False):
+        # TODO: Refactor so as not to modify and get graphs with same method
         """
         Provides the user with a means to interact with a specific graph for analysis. Any in-place changes to the graph
         are retained by the system object, so a copy should be made if this behavior is not desired.
@@ -305,6 +309,9 @@ class System:
         Returns::
             <nx.Graph> graph object for the specified relation
         """
+        if minimum_edge_weight:
+            self.make_graphs(minimum_edge_weight, rescale)
+        
         return self.relation_graphs[relation]
 
     def generate_similarity_relation_graph(self, minimum_edge_weight, rescale):
