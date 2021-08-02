@@ -311,7 +311,7 @@ class System:
         """
         if minimum_edge_weight:
             self.make_graphs(minimum_edge_weight, rescale)
-        
+
         return self.relation_graphs[relation]
 
     def generate_similarity_relation_graph(self, minimum_edge_weight, rescale):
@@ -390,6 +390,27 @@ class System:
 
         contextual_matrix = self.create_similarity_matrix()
         self.relation_graphs['contextual'] = utl.encode_relationships(contextual_matrix, minimum_edge_weight, rescale)
+
+    def get_relation_clusters(self, relation, minimum_edge_weight=0.9):
+        reqs = [req.text for req in self.requirements]
+
+        relation_matrix = dict(
+            keyword=self.create_keyword_matrix(),
+            similarity=self.create_similarity_matrix(),
+            contextual=self.create_contextual_matrix()
+        )
+
+        encoding_matrix = utl.pca(relation_matrix[relation], axis=0)
+        # relation_matrix = utl.radial_basis_kernel(encoding_matrix[:, 1:3])
+        # relation_matrix[relation_matrix < minimum_edge_weight] = 0
+        n_clusters, labels = utl.get_clusters(encoding_matrix[:, 0:2])
+
+        for k in range(n_clusters):
+            cls_mbrs = labels == k
+            print(f"Group {k}")
+            cls_reqs = [f"{i}: {req}" for i, req in enumerate(reqs) if cls_mbrs[i]]
+            for req in cls_reqs:
+                print(f"\t{req}")
 
     def generate_combined_relation_graph(self, minimum_edge_weight, rescale):
         # TODO: Migrate code to generate combined relation matrix

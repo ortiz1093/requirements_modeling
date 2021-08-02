@@ -1,0 +1,16 @@
+3. Requirements.
+3.1. System Definition. Nevermind this part.
+3.2. System Specifications.
+3.2.1. CAR. The car shall be capable of accelerating to 100 km/h within 5 seconds. The car have a turning radius of 8 m or less at speeds below 15 km/h. The car shall have a maximum velocity of 250 km/h or more. The car shall have a maximum fuel efficiency of 11 kpl or more
+3.2.1.1. STEERING SYSTEM. The steering system shall allow for the front wheels to turn 35 degrees from center. The steering system shall be capable of turning the front wheels at 30 deg/sec.
+3.2.1.1.1. STEERING WHEEL. The steering wheel shall have a diameter on the interval of 350 - 450 mm.
+3.2.1.1.2. POWER STEERING PUMP. The power steering pump shall be capable of 900 kpa output pressure. The power steering pump shall maintain output pressure at serpentine belt speeds of 5-100 m/s.
+3.2.1.1.2.1. PUMP PULLEY. The power steering pump pulley shall support a belt width of 20 mm.
+3.2.1.2. DRIVE SYSTEM. The drive system shall have an overall energy efficiency of 0.28 or higher. The drive system shall produce a wheel power of 330 W or higher. The drive system shall have an overall backlash of less than 75 deg.
+3.2.1.2.1. ENGINE. The engine shall have a thermal efficiency of 0.35 or higher. The engine shall consume less than 0.2 liters per minute at peak power.
+3.2.1.2.2. CLUTCH. The clutch shall be capable of holding 900 Nm torque static. The clutch shall be capable of matching input to output revolutions from static output within 0.1 s under 1000 W input shaft power.
+3.2.1.2.2.1. CLUTCH PLATE. The clutch plate shall have a diameter on the interval 300 - 350 mm.
+3.2.1.2.3. TRANSMISSION. The transmission shall have an overall input-output backlash of 15 deg or less. The transmission shall be capable of providing a minimum gear ratio of 2.66:1. The transmission shall be capable of providing a maximum gear ratio of 0.43:1.
+3.2.1.2.3.1. GEAR. The idler gear shall have a helix angle of 30 degrees. The idler gear shall be 0.4 module.
+3.2.1.2.3.2. INPUT SHAFT. The input shaft shall have a diameter of 40 mm. The input shaft shall have 64 splines at the clutch plate. The input shaft material shall have a Young's modulus greater than 200 MPa.
+3.2.1.2.4. DIFFERENTIAL. The differential shall provide a gear ratio on the interval 3.6 - 3.75:1. The differential input shaft shall have a female spline receptacle with 48 splines. The drive system shall have an overall energy efficiency of 0.28 or higher.

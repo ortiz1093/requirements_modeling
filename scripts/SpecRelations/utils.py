@@ -5,6 +5,7 @@ import networkx as nx
 from numpy.linalg import norm, eigh
 from nltk.corpus import stopwords
 from gensim.parsing.preprocessing import strip_multiple_whitespaces, strip_punctuation
+from sklearn.cluster import AffinityPropagation, DBSCAN
 
 stop_words = set(stopwords.words("english"))
 stop_words = stop_words.union(["shall", "should", "must"])
@@ -61,7 +62,7 @@ def parse_document(document, re_pattern="gvsc"):
     split_text = header_pattern.split(document)
     section_texts = list(map(process_text, split_text))
 
-    return list(zip(sections[1:], section_texts[1:]))
+    return list(zip(sections[1:], section_texts[2:]))
 
 
 def parse_section(section_text, keywords=("shall", "should", "must")):
@@ -131,7 +132,13 @@ def minmax(X, axis=0):
     return scale_operation[key](X)
 
 
-def pca(X, axis=0, expl_threshhold=None):
+def pca(X, axis=0):
+    _, _, Vt = np.linalg.svd(X, full_matrices=True)
+
+    return Vt
+
+
+def pca_orig(X, axis=0, expl_threshhold=None):
     X_scaled = minmax(X, axis=axis)
 
     if axis == 0:
@@ -140,6 +147,10 @@ def pca(X, axis=0, expl_threshhold=None):
         covar = X_scaled @ X_scaled.T
 
     L, V = eigh(covar)
+
+    V = np.fliplr(V[:, np.argsort(L)])
+    L.sort()
+    L = np.flip(L)
 
     if expl_threshhold:
         n_dims = 0
@@ -157,9 +168,12 @@ def pca(X, axis=0, expl_threshhold=None):
 def encode_relationships(info_matrix, minimum_edge_weight, rescale):
     # TODO: Determine why rescale functionality is doubly removing edges after minimum_edge_weight prune. Fix.
     # TODO: Check if networkx supports adding weighted edges from numpy array versus nested loops
-    encoding_matrix = pca(info_matrix, axis=0)
+    encoding_matrix = pca(info_matrix, axis=0).T
 
-    relation_matrix = radial_basis_kernel(encoding_matrix[:, :2])
+    # relation_matrix = radial_basis_kernel(encoding_matrix[:, :2])
+    # relation_matrix = radial_basis_kernel(encoding_matrix[:, 1:3])
+    # relation_matrix = radial_basis_kernel(encoding_matrix)
+    relation_matrix = radial_basis_kernel(encoding_matrix[:, 1:])
     relation_matrix[relation_matrix < minimum_edge_weight] = np.nan
     relation_matrix = minmax(relation_matrix, axis=0) + (1 - relation_matrix) * 0.05 if rescale else relation_matrix
     n_dims = relation_matrix.shape[0]
@@ -216,6 +230,23 @@ def similarity(spacy_textA, spacy_textB, measure="cosine"):
     similarity_functions = dict(cosine=cosine_similarity)
 
     return similarity_functions[measure](spacy_textA, spacy_textB)
+
+
+def get_clusters(X, algo='Affinity Propagation'):
+    # TODO: try clustering by gaussian kernel
+    algorithm = {
+        'Affinity Propagation': AffinityPropagation(damping=0.5,
+                                                    random_state=5),
+        'DBSCAN': DBSCAN(eps=0.1, min_samples=1, n_jobs=-1)
+    }
+
+    clusters = algorithm[algo].fit(X)
+    # centers = clusters.cluster_centers_indices_
+    # n_clusters = len(centers)
+    labels = clusters.labels_
+    n_clusters = len(set(labels))
+
+    return n_clusters, labels
 
 
 if __name__ == "__main__":

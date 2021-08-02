@@ -29,7 +29,7 @@ The engine shall consume less than 0.2 liters per minute at peak power
 
 CLUTCH
 The clutch shall be capable of holding 900 Nm torque static.
-The clutch shall be capable of matching input to output revolutions from static output within 0.1 s under 1000 W input shaft power
+The clutch shall be capable of matching input to output revolutions from static output within 0.1 s under 1000 W input shaft power.
 
 CLUTCH PLATE
 The clutch plate shall have a diameter on the interval 300 - 350 mm
