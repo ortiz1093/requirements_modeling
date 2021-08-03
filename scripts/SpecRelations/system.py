@@ -5,6 +5,10 @@ from .requirement import Requirement
 from .tree import Tree
 from numpy.random import default_rng
 import numpy as np
+from sentence_transformers import SentenceTransformer, util
+
+# model = SentenceTransformer('paraphrase-MiniLM-L12-v2')
+model = SentenceTransformer('allenai-specter')
 
 rng = default_rng(42)
 
@@ -283,17 +287,26 @@ class System:
             similarity_matrix <ndarray>: 2D array containing similarity values for each pair of requirements.
         """
 
-        reqs = [req.text for req in self.requirements]
-        m = len(reqs)
-        similarity_matrix = np.zeros([m, m])
-        for i in range(m):
-            reqA = utl.text2spacy(reqs[i])
-            reqA = utl.remove_stops(reqA)
-            for j in range(i, m):
-                reqB = utl.text2spacy(reqs[j])
-                reqB = utl.remove_stops(reqB)
-                similarity_matrix[i][j] = similarity_matrix[j][i] = utl.similarity(reqA, reqB,
-                                                                                   measure=measure)
+        # requirements = [' '.join(sorted(req.keywords)) for req in self.requirements]
+        requirements = [req.text for req in self.requirements]
+
+        # Compute embeddings
+        embeddings = model.encode(requirements, convert_to_tensor=True)
+
+        # Compute cosine-similarities for each sentence with each other sentence
+        cosine_scores = util.pytorch_cos_sim(embeddings, embeddings)
+        similarity_matrix = np.array(cosine_scores)
+
+        # m = len(reqs)
+        # similarity_matrix = np.zeros([m, m])
+        # for i in range(m):
+        #     reqA = utl.text2spacy(reqs[i])
+        #     reqA = utl.remove_stops(reqA)
+        #     for j in range(i, m):
+        #         reqB = utl.text2spacy(reqs[j])
+        #         reqB = utl.remove_stops(reqB)
+        #         similarity_matrix[i][j] = similarity_matrix[j][i] = utl.similarity(reqA, reqB,
+        #                                                                            measure=measure)
 
         return similarity_matrix
 
