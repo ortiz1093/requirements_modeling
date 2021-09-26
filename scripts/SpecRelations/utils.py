@@ -93,6 +93,14 @@ def process_section_number(section_number):
     return section_id, depth
 
 
+def radial_basis_kernel_1D(A):
+    sigma = A.std()
+
+    gaussians = np.exp(-(A ** 2) / (2 * sigma ** 2))
+
+    return gaussians
+
+
 def radial_basis_kernel(A):
     sigma = norm(np.std(A, axis=0))
 
@@ -174,19 +182,19 @@ def encode_relationships(info_matrix, minimum_edge_weight, rescale):
     # relation_matrix = radial_basis_kernel(encoding_matrix[:, 1:3])
     # relation_matrix = radial_basis_kernel(encoding_matrix)
     relation_matrix = radial_basis_kernel(encoding_matrix[:, 1:])
-    relation_matrix[relation_matrix < minimum_edge_weight] = np.nan
+    relation_matrix[relation_matrix < minimum_edge_weight] = 0
     relation_matrix = minmax(relation_matrix, axis=0) + (1 - relation_matrix) * 0.05 if rescale else relation_matrix
-    n_dims = relation_matrix.shape[0]
 
-    relation_graph = nx.Graph()
-    for i in range(n_dims - 1):
-        for ii in range(i + 1, n_dims):
-            edge_weight = relation_matrix[i][ii]
-            if not np.isnan(edge_weight):
-                # print(edge_weight)
-                relation_graph.add_edge(i, ii, color="k", weight=edge_weight)
+    # n_dims = relation_matrix.shape[0]
+    # relation_graph = nx.Graph()
+    # for i in range(n_dims - 1):
+    #     for ii in range(i + 1, n_dims):
+    #         edge_weight = relation_matrix[i][ii]
+    #         if not np.isnan(edge_weight):
+    #             # print(edge_weight)
+    #             relation_graph.add_edge(i, ii, color="k", weight=edge_weight)
 
-    return relation_graph
+    return nx.from_numpy_array(relation_matrix, parallel_edges=False, create_using=None)
 
 
 def cosine_similarity(spacy_textA, spacy_textB):

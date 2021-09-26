@@ -6,6 +6,7 @@ from .tree import Tree
 from numpy.random import default_rng
 import numpy as np
 from sentence_transformers import SentenceTransformer, util
+import networkx as nx
 
 # model = SentenceTransformer('paraphrase-MiniLM-L12-v2')
 model = SentenceTransformer('allenai-specter')
@@ -225,6 +226,7 @@ class System:
 
         kw_matrix = self.create_keyword_matrix()
         self.relation_graphs['keyword'] = utl.encode_relationships(kw_matrix, minimum_edge_weight, rescale)
+        pass
 
     def make_graphs(self, minimum_edge_weight=0, rescale=False):
         # TODO: Make method selective, so that not all graphs are re-built every time
@@ -245,7 +247,7 @@ class System:
         self.generate_similarity_relation_graph(minimum_edge_weight, rescale)
         self.generate_contextual_relation_graph(minimum_edge_weight, rescale)
 
-    def show_graphs(self, relations=None, minimum_edge_weight=0, rescale=False):
+    def show_graphs(self, relations=None, minimum_edge_weight=0, rescale=False, layout="spring"):
         # TODO: Refactor so as not to modify and display graphs with same method
         """
         Displays the specified relationship graphs in the default browser, a new tab is opened for each graph. If the
@@ -270,7 +272,7 @@ class System:
             G = self.relation_graphs[relation]
             assert G is not None, f"No {relation.title()} graph has been generated"
             title = f"{self.name} Requirements {relation.title()} Relationship Graph"
-            viz.node_adjacency_heatmap(G, title=title)
+            viz.node_adjacency_heatmap(G, title=title, layout=layout)
 
     def create_similarity_matrix(self, measure='cosine'):
         """
@@ -346,7 +348,19 @@ class System:
             self.relation_graphs = {}
 
         similarity_matrix = self.create_similarity_matrix()
-        self.relation_graphs['similarity'] = utl.encode_relationships(similarity_matrix, minimum_edge_weight, rescale)
+        similarity_matrix[similarity_matrix < minimum_edge_weight] = 0
+        # self.relation_graphs['similarity'] = utl.encode_relationships(similarity_matrix, minimum_edge_weight, rescale)
+
+        self.relation_graphs['similarity'] = nx.from_numpy_array(
+            similarity_matrix, parallel_edges=False, create_using=None)
+
+        # relation_graph = nx.Graph()
+        # for i in range(n_dims - 1):
+        #     for ii in range(i + 1, n_dims):
+        #         edge_weight = relation_matrix[i][ii]
+        #         if not np.isnan(edge_weight):
+        #             # print(edge_weight)
+        #             relation_graph.add_edge(i, ii, color="k", weight=edge_weight)
 
     def create_contextual_matrix(self):
         """
@@ -376,9 +390,10 @@ class System:
                 rel_matrix[i, j] = rel_matrix[j, i] = \
                     doc.distance_between_nodes(node_i, node_j)
 
-        rel_minmax = (rel_matrix - rel_matrix.min()) / (rel_matrix.max() - rel_matrix.min())
+        # rel_minmax = (rel_matrix - rel_matrix.min()) / (rel_matrix.max() - rel_matrix.min())
 
-        return 1 - rel_minmax
+        # return 1 - rel_minmax
+        return utl.radial_basis_kernel_1D(rel_matrix)
 
     def generate_contextual_relation_graph(self, minimum_edge_weight, rescale):
         """
@@ -401,8 +416,12 @@ class System:
         if self.relation_graphs is None:
             self.relation_graphs = {}
 
-        contextual_matrix = self.create_similarity_matrix()
-        self.relation_graphs['contextual'] = utl.encode_relationships(contextual_matrix, minimum_edge_weight, rescale)
+        contextual_matrix = self.create_contextual_matrix()
+        contextual_matrix[contextual_matrix < minimum_edge_weight] = 0
+
+        # self.relation_graphs['contextual'] = utl.encode_relationships(contextual_matrix, minimum_edge_weight, rescale)
+        self.relation_graphs['contextual'] = nx.from_numpy_array(
+            contextual_matrix, parallel_edges=False, create_using=None)
 
     def get_relation_clusters(self, relation, minimum_edge_weight=0.9):
         reqs = [req.text for req in self.requirements]

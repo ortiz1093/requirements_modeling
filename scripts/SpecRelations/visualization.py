@@ -54,10 +54,10 @@ def node_adjacency_heatmap(G, layout="spring", title=""):
             # 'Greys' | 'YlGnBu' | 'Greens' | 'YlOrRd' | 'Bluered' | 'RdBu' |
             # 'Reds' | 'Blues' | 'Picnic' | 'Rainbow' | 'Portland' | 'Jet' |
             # 'Hot' | 'Blackbody' | 'Earth' | 'Electric' | 'Viridis' |
-            colorscale="Viridis",
+            colorscale="Reds",
             reversescale=True,
             color=[],
-            size=25,
+            size=45,
             colorbar=dict(
                 thickness=15,
                 title="Weighted Degree",
@@ -78,10 +78,10 @@ def node_adjacency_heatmap(G, layout="spring", title=""):
         significance = wtd_degree[1] / degree[1]
 
         node_wtd_degree.append(wtd_degree[1])
-        node_text.append(str(i).zfill(2))
+        node_text.append(str(i + 1).zfill(2))
 
         node_hovertext.append(
-            f"Requirement {i}<br>"
+            f"Requirement {i + 1}<br>"
             f"Degree: {degree[1]}<br>"
             f"Wtd Degree: {np.round(wtd_degree[1],2)}<br>"
             f"Significance: {np.round(significance,2)}"
@@ -90,6 +90,10 @@ def node_adjacency_heatmap(G, layout="spring", title=""):
     node_trace.marker.color = node_wtd_degree
     node_trace.hovertext = node_hovertext
     node_trace.text = node_text
+    node_trace.textfont = dict(
+        size=25,
+        color='black'
+    )
 
     title += " " if title else ""
 
@@ -104,6 +108,7 @@ def node_adjacency_heatmap(G, layout="spring", title=""):
             margin=dict(b=20, l=5, r=5, t=40),
             xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
             yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+            plot_bgcolor='white',
         ),
     )
     fig.show()
